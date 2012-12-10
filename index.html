@@ -72,113 +72,34 @@
 		
 		var page_id = 442893865746848,
 			gallery_id = 1;
-		
-		/* LIKE GATE */
-		
-		var waiter = new Waiter(2, function(all_done, box) {
-			if (all_done && box['user_id']) {
-				var likeGate = function(active) {
-					$('#like-gate').setVisible(active);
-					$('#content').setVisible(!active);
-					
-					events.fire('content_released');
-				};
-				
-				if (!box['settings'] || !box['settings'].likers_only) {
-					likeGate(false);
-				} else {
-					FB.api({
-					    method  : 'pages.isFan',
-					    page_id : page_id,
-					}, function(response) {
-						likeGate(!response);
-				    });			
-				}
-			}
-		}, 3000);
-		
-		events.bind('user_identified', function(event, user_id) {
-			waiter.go('user_id', user_id);
-		});
-			
-		server.getPageSettings(gallery_id, function(success, settings) {
-			waiter.go('settings', settings);
-		});
-		
-		/* BIND EVENTS */
-		
+	</script>
+	
+	<script src="script/like_gate.js"></script>
+	<script src="script/albums.js"></script>
+	<script src="script/pictures.js"></script>
+	
+	<script>
 		$(document).ready(function() {
 			$('.tab').hide();
 			$('#albums').show();
 			
 			$('.selector').click(function(event) {
-				events.fire('tab_selected', $(event.target).closest('.selector').attr('tab'));
+				events.fire('tab_selected', $(event.target).closest('.selector').attr('data-tab'));
 			});
 		});
-		
-		/* POPULATE SELECTORS AND TABS */
-		
-		function renderAlbum(album) {
-			var html = $('<div/>');
-			
-			html.addClass('album')
-			.append(
-				$('<img/>')
-					.attr('src', album.cover_picture_thumb_url)
-			).append(
-				$('<div/>')
-					.html(album.title + '(' + album.picture_count + ')')
-			);
-			
-			return html;
-		}
-		
-		function renderPicture(picture) {
-			var html = $('<div/>');
-			
-			html.addClass('picture')
-			.append(
-				$('<img/>')
-					.attr('src', picture.thumb_url)
-			);
-			
-			return html;
-		}
 		
 		events.bind('content_released', function(event) {
 			server.getPicturesCount(gallery_id, function(success, response) {
 				if (success) {
-					$('.selector[tab=albums] .count').html(response.album_count);
-					$('.selector[tab=latest_pictures] .count').html(response.latest_pictures_count);
+					$('.selector[data-tab=albums] .count').html(response.album_count);
+					$('.selector[data-tab=latest_pictures] .count').html(response.latest_pictures_count);
 					
-					server.getAlbums(gallery_id, 0, 20, function(success, response) {
-						if (success) {
-							response.albums.forEach(function(album) {
-								$('#albums').append(renderAlbum(album));
-							});
-						}
-					});
-					
-					server.getLatestPictures(gallery_id, 0, 20, function(success, response) {
-						if (success) {
-							response.pictures.forEach(function(picture) {
-								$('#latest_pictures').append(renderPicture(picture));
-							});
-						}
-					});
-					
-					server.getMostPopularPictures(gallery_id, 0, 20, function(success, response) {
-						if (success) {
-							response.pictures.forEach(function(picture) {
-								$('#most_popular').append(renderPicture(picture));
-							});
-						}
-					});
+					loadAlbums();
+					loadLatestPictures();
+					loadMostPopularPictures();
 				}
 			});
 		});
-		
-		/* EVENTS */
 		
 		events.bind('tab_selected', function(event, tab) {
 			$('.tab').hide();
@@ -192,9 +113,9 @@
 	<div id="like-gate" style="display: none;">LIKE THIS PAGE TO GET ACCESS</div>
 	<div id="content" style="display: none;">
 		<div id="selectors">
-			<div class="selector" tab="albums">Albums<div class="count"></div></div>
-			<div class="selector" tab="latest_pictures">Latest pictures<div class="count"></div></div>
-			<div class="selector" tab="most_popular">Most popular<div class="count"></div></div>
+			<div class="selector" data-tab="albums">Albums<div class="count"></div></div>
+			<div class="selector" data-tab="latest_pictures">Latest pictures<div class="count"></div></div>
+			<div class="selector" data-tab="most_popular">Most popular<div class="count"></div></div>
 		</div>
 		<div id="albums" class="tab"></div>
 		<div id="latest_pictures" class="tab"></div>

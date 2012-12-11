@@ -40,7 +40,7 @@ function Album(settings) {
 	    $('#overlay').fadeIn('fast');
 	 
 	    $('#picture_preview').show().animate({
-	        'top': '-15px'
+	        'top': '10px'
 	    }, 300);
 	 
 	 	server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);

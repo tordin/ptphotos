@@ -47,7 +47,7 @@ body {
 }
 
 .overlay{
-    background:rgba(169,181,211,0.5); /* CUSTOMIZE */
+    background:rgba(169,181,211,0.7); /* CUSTOMIZE */
     position:fixed;
     top:0px;
     bottom:0px;

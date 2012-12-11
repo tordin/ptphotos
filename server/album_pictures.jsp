@@ -4,7 +4,7 @@
 <%
 int offset = 0, length = 20;
 
-String offsetParameter = request.getParameter("offset"), length = request.getParameter("offset");
+String offsetParameter = request.getParameter("offset"), lengthParameter = request.getParameter("length");
 
 if (offsetParameter != null) {
 	offset = Integer.parseInt(offsetParameter);

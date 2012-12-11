@@ -142,6 +142,16 @@ body {
     margin-bottom: 8px;
 }
 
+.load_more {
+    text-align: center;
+    padding: 25px 0;
+    clear: both;
+}
+
+.load_more a {
+    padding: 15px;
+}
+
 #picture_preview {
     width: 810px;
     position:fixed;

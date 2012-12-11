@@ -1,6 +1,8 @@
 body {
     background: #E7EBF2; /* CUSTOMIZE */
     font-family: helvetica, arial, verdana;
+    padding: 0;
+    margin: 0;
 }
 
 .hidden {
@@ -29,7 +31,7 @@ body {
 }
 
 .wrapper {
-    width: 850px;
+
     margin: 0 auto;
     text-align: center;
 }
@@ -60,12 +62,12 @@ body {
 }
 
 #selectors {
-    width: 810px;
+    width: 770px;
 }
 
 .selector {
     float: left;
-    width: 220px;
+    width: 206px;
     padding: 10px 20px;
     background-color: #F2F4F8;  /* CUSTOMIZE */
     margin: 0px 5px;
@@ -114,26 +116,26 @@ body {
     padding: 4px;
 }
 
-.tab .img-item, .tab .img-item img {
-    width: 196px;
-    height: 196px;
+.tab .picture, .tab .picture img {
+    width: 186px;
+    height: 186px;
 }
 
-.tab .img-item {
+.tab .picture {
     float: left;
     border: 1px solid #CCC;  /* CUSTOMIZE */
     margin: 2px;
 }
 
-.tab .album-item {
+.tab .album {
     float: left;
-    width: 236px;
-    height: 239px;
+    width: 232px;
+    height: 232px;
     text-align: center;
-    margin: 16px;
+    margin: 12px;
 }
 
-.tab .album-item img {
+.tab .album img {
     width: 196px;
     height: 196px;
     margin-bottom: 8px;

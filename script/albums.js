@@ -7,7 +7,12 @@ function renderAlbum(album) {
 			.attr('src', album.cover_picture_thumb_url)
 	).append(
 		$('<div/>')
-			.html(album.title + '(' + album.picture_count + ')')
+                        .addClass('title')
+			.html(album.title)
+	).append(
+		$('<div/>')
+                        .addClass('label')
+			.html(album.date + ' - ' + album.picture_count + ' photos')
 	);
 	
 	return html;

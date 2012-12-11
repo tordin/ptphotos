@@ -12,7 +12,7 @@ function Album(settings) {
 	var $t = this;
 	
 	var last_loaded_picture = 0,
-		pictures_per_page = 5,
+		pictures_per_page = 10,
 		pictures = [],
 		current_picture = -1;
 		
@@ -29,13 +29,21 @@ function Album(settings) {
 		
 		$('.img-control').unbind('click');
 		
-		$('.img-control.previous').click(function() {
-			navigate(-1);
-		});
+		if (current_picture > 0) {
+			$('.img-control.previous').toggleClass('invisible', false).click(function() {
+				navigate(-1);
+			});
+		} else {
+			$('.img-control.previous').toggleClass('invisible', true);
+		}
 		
-		$('.img-control.next').click(function() {
-			navigate(1);
-		});
+		if (current_picture < last_loaded_picture - 1) {
+			$('.img-control.next').toggleClass('invisible', false).click(function() {
+				navigate(1);
+			});
+		} else {
+			$('.img-control.next').toggleClass('invisible', true);
+		}
 		
 	    $('#overlay').fadeIn('fast');
 	 
@@ -78,7 +86,7 @@ function Album(settings) {
 			.addClass('load_more')
 			.append(
 				$('<a/>')
-                                        .addClass('rect title')
+                    .addClass('rect title')
 					.html('Load more')
 					.click(loadPictures)
 			)

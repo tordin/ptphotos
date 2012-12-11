@@ -58,6 +58,7 @@
             });
 		
             events.bind('tab_selected', function(event, tab) {
+            	$('#content_title').empty();
                 $('.tab').hide();
                 $('#' + tab).show();
                 

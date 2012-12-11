@@ -17,8 +17,9 @@ function renderAlbum(album) {
 		events.fire('tab_selected', 'album_pictures');
 
 		new Album({
-			target : 'album_pictures',
-			load : function(offset, length, callback) {
+			target   : 'album_pictures',
+			album_id : album.album_id,
+			load     : function(offset, length, callback) {
 				server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
 					if (success) {
 						callback(response.pictures);

@@ -1,3 +1,13 @@
+function closeImage() {
+    $('#picture_preview').animate({
+        'top' : '-500px'
+    }, 200, function() {
+        $('#picture_preview').hide();
+    });
+ 
+    $('#overlay').fadeOut('fast');
+}
+
 function Album(settings) {
 	var $t = this;
 	
@@ -31,7 +41,9 @@ function Album(settings) {
 	 
 	    $('#picture_preview').show().animate({
 	        'top': '-15px'
-	    }, 500);
+	    }, 300);
+	 
+	 	server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);
 	}
 
 	function renderPicture(picture, i) {
@@ -71,25 +83,34 @@ function Album(settings) {
 			)
 	);
 	
+	$('.img-close-preview, #overlay')
+		.unbind('click')
+		.click(function() {
+			closeImage();
+		});
+
+	$(document)
+		.unbind('keydown')
+		.keydown(function(event) {
+			if (event.keyCode == 37) {
+				navigate(-1);
+				
+			} else if (event.keyCode == 39) {
+				navigate(1);
+				
+			} else if (event.keyCode == 27) {
+				closeImage();
+			}
+		});
+	
 	loadPictures();
 }
 
-$(document).ready(function() {
-	$('.img-close-preview, #overlay').click(function() {
-	    $('#picture_preview').animate({
-	        'top' : '-500px'
-	    }, 500, function() {
-	        $('#picture_preview').hide();
-	    });
-	 
-	    $('#overlay').fadeOut('fast');
-	});
-});
-
 function createDefaultAlbums() {
 	new Album({
-		target : 'latest_pictures',
-		load : function(offset, length, callback) {
+		target   : 'latest_pictures',
+		album_id : 'latest_pictures',
+		load     : function(offset, length, callback) {
 			server.getLatestPictures(gallery_id, offset, length, function(success, response) {
 				if (success) {
 					callback(response.pictures);
@@ -99,8 +120,9 @@ function createDefaultAlbums() {
 	});
 
 	new Album({
-		target : 'most_popular',
-		load : function(offset, length, callback) {
+		target   : 'most_popular',
+		album_id : 'most_popular',
+		load     : function(offset, length, callback) {
 			server.getMostPopularPictures(gallery_id, offset, length, function(success, response) {
 				if (success) {
 					callback(response.pictures);

@@ -51,32 +51,8 @@ var server = new function() {
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
-				offset     : offset,
-				length     : length
-			},
-			dataType    : 'jsonp',
-			contentType : 'application/json',
-			success     : function(response) {
-				if (response && response.success) {
-					callback(true, response);
-				} else {
-					callback(false);
-				}
-			},
-			error       : function() {
-				callback(false);	
-			}			
-		});
-	};
-	
-	$o.getAlbums = function(gallery_id, offset, length, callback) {
-		$.ajax({
-			url         : environment.server_url + '/albums.jsp',
-			data        : {
-				method     : 'get',
-				gallery_id : gallery_id,
-				offset     : offset,
-				length     : length
+				offset     : offset ? offset : 0,
+				length     : length ? length : 0
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -99,8 +75,8 @@ var server = new function() {
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
-				offset     : offset,
-				length     : length
+				offset     : offset ? offset : 0,
+				length     : length ? length : 0
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -123,8 +99,8 @@ var server = new function() {
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
-				offset     : offset,
-				length     : length
+				offset     : offset ? offset : 0,
+				length     : length ? length : 0
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -148,8 +124,8 @@ var server = new function() {
 				method     : 'get',
 				gallery_id : gallery_id,
 				album_id   : album_id,
-				offset     : offset,
-				length     : length
+				offset     : offset ? offset : 0,
+				length     : length ? length : 0
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',

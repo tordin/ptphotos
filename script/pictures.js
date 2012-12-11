@@ -8,7 +8,15 @@ function Album(settings) {
 		.append(
 			$('<img/>')
 				.attr('src', picture.thumb_url)
-		);
+		).click(function() {
+			$('#large_picture_src').attr('src', picture.picture_url);
+			
+		    $('#overlay').fadeIn('fast');
+		 
+		    $('#picture_preview').show().animate({
+		        'top':'-15px'
+		    }, 500);
+		});
 		
 		return html;
 	}
@@ -39,6 +47,18 @@ function Album(settings) {
 	
 	loadPictures();
 }
+
+$(document).ready(function() {
+	$('.img-close-preview, #overlay').click(function() {
+	    $('#picture_preview').animate({
+	        'top' : '-500px'
+	    }, 500, function() {
+	        $('#picture_preview').hide();
+	    });
+	 
+	    $('#overlay').fadeOut('fast');
+	});
+});
 
 function createDefaultAlbums() {
 	new Album({

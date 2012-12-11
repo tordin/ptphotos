@@ -126,6 +126,7 @@ body {
     float: left;
     border: 1px solid #CCC;  /* CUSTOMIZE */
     margin: 2px;
+    cursor: pointer;
 }
 
 .tab .album {
@@ -134,12 +135,24 @@ body {
     height: 232px;
     text-align: center;
     margin: 12px;
+    cursor: pointer;
 }
 
 .tab .album img {
     width: 196px;
     height: 196px;
     margin-bottom: 8px;
+}
+
+.load_more {
+    text-align: center;
+    padding: 25px 0;
+    clear: both;
+}
+
+.load_more a {
+    padding: 15px;
+    cursor: pointer;
 }
 
 #picture_preview {
@@ -175,6 +188,7 @@ body {
     text-align: center;
     width: 50px;
     height: 50px;
+    cursor: pointer;
 }
 
 .img-control.previous {
@@ -192,4 +206,5 @@ body {
     position: absolute;
     padding: 5px;
     right: 10px;
+    cursor: pointer;
 }

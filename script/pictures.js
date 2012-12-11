@@ -78,6 +78,7 @@ function Album(settings) {
 			.addClass('load_more')
 			.append(
 				$('<a/>')
+                                        .addClass('rect title')
 					.html('Load more')
 					.click(loadPictures)
 			)

@@ -68,7 +68,7 @@ function Album(settings) {
 		return html;
 	}
 	
-	function loadPictures() {
+	function loadPictures(callback) {
 		settings.load(last_loaded_picture, pictures_per_page, function(loaded_pictures) {
 			var i = pictures.length;
 			pictures = pictures.concat(loaded_pictures);
@@ -78,6 +78,10 @@ function Album(settings) {
 			});
 		
 			last_loaded_picture += pictures_per_page;
+			
+			if (callback) {
+				callback();
+			}
 		});
 	}
 
@@ -88,7 +92,22 @@ function Album(settings) {
 				$('<a/>')
                     .addClass('rect title')
 					.html('Load more')
-					.click(loadPictures)
+					.click(function(event) {
+						var load_more = $(event.target).closest('.load_more');
+						load_more.children('img').show();
+						load_more.children('a').hide();
+						
+						loadPictures(function() {
+							load_more.children('img').hide();
+							load_more.children('a').show();
+						});
+					})
+			)
+			.append(
+				$('<img/>')
+					.addClass('rect')
+                    .attr('src', 'img/ajax-loader.gif')
+                    .hide()
 			)
 	);
 	

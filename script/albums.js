@@ -15,6 +15,18 @@ function renderAlbum(album) {
 			.html(album.date + ' - ' + album.picture_count + ' photos')
 	).click(function() {
 		events.fire('tab_selected', 'album_pictures');
+		
+		$('#content_title')
+			.empty()
+			.append(
+				$('<div/>')
+		            .addClass('title')
+					.html(album.title)
+			).append(
+				$('<div/>')
+		            .addClass('label')
+					.html(album.date + ' - ' + album.picture_count + ' photos')
+			);
 
 		new Album({
 			target   : 'album_pictures',

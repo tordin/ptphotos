@@ -1,5 +1,3 @@
-/* LIKE GATE */
-
 var waiter = new Waiter(2, function(all_done, box) {
 	if (all_done && box['user_id']) {
 		var likeGate = function(active) {

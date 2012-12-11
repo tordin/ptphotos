@@ -72,6 +72,7 @@ body {
     background-color: #F2F4F8;  /* CUSTOMIZE */
     margin: 0px 5px;
     color: #8897BD;
+    cursor: pointer;
 }
 
 .selector > img {

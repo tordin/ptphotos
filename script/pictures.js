@@ -12,7 +12,7 @@ function Album(settings) {
 	var $t = this;
 	
 	var last_loaded_picture = 0,
-		pictures_per_page = 10,
+		pictures_per_page = 16,
 		pictures = [],
 		current_picture = -1;
 		

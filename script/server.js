@@ -155,4 +155,19 @@ var server = new function() {
 			contentType : 'application/json'			
 		});
 	};
+	
+	$o.logUserAccess = function(gallery_id, user_facebook_id, user_name, user_email) {
+		$.ajax({
+			url         : environment.server_url + '/log_user_access.jsp',
+			data        : {
+				method           : 'get',
+				gallery_id       : gallery_id,
+				user_facebook_id : user_facebook_id,
+				user_name        : user_name,
+				user_email       : user_email
+			},
+			dataType    : 'jsonp',
+			contentType : 'application/json'			
+		});
+	};
 };

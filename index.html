@@ -37,6 +37,12 @@
                     events.fire('tab_selected', $(event.target).closest('.selector').attr('data-tab'));
                 });
             });
+            
+            events.bind('user_identified', function(event, user_id) {
+            	FB.api('/me', function(response) {
+	            	server.logUserAccess(gallery_id, user_id, response.name, '');
+				});
+            });
 		
             events.bind('content_released', function(event) {
                 server.getPicturesCount(gallery_id, function(success, response) {

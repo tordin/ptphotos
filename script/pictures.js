@@ -45,16 +45,14 @@ function Album(settings) {
             $('.img-control.next').toggleClass('invisible', true);
         }
 		
-           $('#overlay').fadeIn('fast');
-	 
-           FB.Canvas.getPageInfo(function(info) {
-                    
-           var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
-                    
-            $('#picture_preview').show().animate({
-                       'top': scroll_top + 'px'
-               }, 300);
-     
+		$('#overlay').fadeIn('fast');
+ 
+		FB.Canvas.getPageInfo(function(info) {
+			var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
+	                
+			$('#picture_preview').show().animate({
+				'top': scroll_top + 'px'
+			}, 300);
         });
 	 
         server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);

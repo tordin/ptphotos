@@ -21,8 +21,7 @@
 			
             environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
 		
-            var page_id = 442893865746848,
-            gallery_id = 1;
+            var page_id = 442893865746848, gallery_id = 1;
         </script>
 
         <script src="script/like_gate.js"></script>
@@ -46,8 +45,7 @@
                         $('.selector[data-tab=latest_pictures] .count').html(response.latest_pictures_count);
 					
                         loadAlbums();
-                        loadLatestPictures();
-                        loadMostPopularPictures();
+                        createDefaultAlbums();
                     }
                 });
             });

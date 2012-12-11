@@ -53,6 +53,9 @@
             events.bind('tab_selected', function(event, tab) {
                 $('.tab').hide();
                 $('#' + tab).show();
+                
+                $('.selector').removeClass('selected');
+                $('.selector[data-tab=' + tab + ']').addClass('selected');
             });
         </script>
     </head>

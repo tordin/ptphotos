@@ -29,13 +29,21 @@ function Album(settings) {
 		
 		$('.img-control').unbind('click');
 		
-		$('.img-control.previous').click(function() {
-			navigate(-1);
-		});
+		if (current_picture > 0) {
+			$('.img-control.previous').toggleClass('invisible', false).click(function() {
+				navigate(-1);
+			});
+		} else {
+			$('.img-control.previous').toggleClass('invisible', true);
+		}
 		
-		$('.img-control.next').click(function() {
-			navigate(1);
-		});
+		if (current_picture < last_loaded_picture - 1) {
+			$('.img-control.next').toggleClass('invisible', false).click(function() {
+				navigate(1);
+			});
+		} else {
+			$('.img-control.next').toggleClass('invisible', true);
+		}
 		
 	    $('#overlay').fadeIn('fast');
 	 

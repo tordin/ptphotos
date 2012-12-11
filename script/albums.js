@@ -7,13 +7,26 @@ function renderAlbum(album) {
 			.attr('src', album.cover_picture_thumb_url)
 	).append(
 		$('<div/>')
-                        .addClass('title')
+            .addClass('title')
 			.html(album.title)
 	).append(
 		$('<div/>')
-                        .addClass('label')
+            .addClass('label')
 			.html(album.date + ' - ' + album.picture_count + ' photos')
-	);
+	).click(function() {
+		events.fire('tab_selected', 'album_pictures');
+
+		new Album({
+			target : 'album_pictures',
+			load : function(offset, length, callback) {
+				server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
+					if (success) {
+						callback(response.pictures);
+					}
+				});
+			} 
+		});
+	});
 	
 	return html;
 }

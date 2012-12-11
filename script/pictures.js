@@ -8,7 +8,15 @@ function Album(settings) {
 		.append(
 			$('<img/>')
 				.attr('src', picture.thumb_url)
-		);
+		).click(function() {
+			$('#large_picture_src').attr('src', picture.picture_url);
+			
+		    $('#overlay').fadeIn('fast');
+		 
+		    $('#picture_preview').show().animate({
+		        'top':'-15px'
+		    }, 500);
+		});
 		
 		return html;
 	}
@@ -21,26 +29,42 @@ function Album(settings) {
 			pictures.forEach(function(picture) {
 				$('#' + settings.target + ' .load_more').before(renderPicture(picture));
 			});
-		});
 		
-		last_picture += pictures_per_page;
+			last_picture += pictures_per_page;
+		});
 	}
 
-	$('#' + settings.target).append(
-		$('<a/>')
+	$('#' + settings.target).empty()
+	.append(
+		$('<div/>')
 			.addClass('load_more')
-			.html('Load more')
-			.click(loadPictures)
+			.append(
+				$('<a/>')
+					.html('Load more')
+					.click(loadPictures)
+			)
 	);
 	
 	loadPictures();
 }
 
+$(document).ready(function() {
+	$('.img-close-preview, #overlay').click(function() {
+	    $('#picture_preview').animate({
+	        'top' : '-500px'
+	    }, 500, function() {
+	        $('#picture_preview').hide();
+	    });
+	 
+	    $('#overlay').fadeOut('fast');
+	});
+});
+
 function createDefaultAlbums() {
 	new Album({
 		target : 'latest_pictures',
 		load : function(offset, length, callback) {
-			server.getLatestPictures(gallery_id, offset, offset, function(success, response) {
+			server.getLatestPictures(gallery_id, offset, length, function(success, response) {
 				if (success) {
 					callback(response.pictures);
 				}
@@ -51,7 +75,7 @@ function createDefaultAlbums() {
 	new Album({
 		target : 'most_popular',
 		load : function(offset, length, callback) {
-			server.getMostPopularPictures(gallery_id, offset, offset, function(success, response) {
+			server.getMostPopularPictures(gallery_id, offset, length, function(success, response) {
 				if (success) {
 					callback(response.pictures);
 				}

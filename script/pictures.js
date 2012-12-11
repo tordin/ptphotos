@@ -70,14 +70,13 @@ function Album(settings) {
 	
 	function loadPictures(callback) {
 		settings.load(last_loaded_picture, pictures_per_page, function(loaded_pictures) {
-			var i = pictures.length;
 			pictures = pictures.concat(loaded_pictures);
 			
 			loaded_pictures.forEach(function(picture, k) {
-				$('#' + settings.target + ' .load_more').before(renderPicture(picture, i + k));
+				$('#' + settings.target + ' .load_more').before(renderPicture(picture, last_loaded_picture + k));
 			});
 		
-			last_loaded_picture += pictures_per_page;
+			last_loaded_picture = pictures.length;
 			
 			if (callback) {
 				callback();

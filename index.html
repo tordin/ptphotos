@@ -58,7 +58,8 @@
             });
 		
             events.bind('tab_selected', function(event, tab) {
-            	$('#content_title').empty();
+            	$('#content_title, #album_pictures').empty();
+            	
                 $('.tab').hide();
                 $('#' + tab).show();
                 

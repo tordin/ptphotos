@@ -7,8 +7,12 @@ var waiter = new Waiter(2, function(all_done, box) {
 			events.fire('content_released');
 		};
 		
-		if (!box['settings'] || !box['settings'].likers_only) {
+		if (liked) {
 			likeGate(false);
+			
+		} else if (!box['settings'] || !box['settings'].likers_only) {
+			likeGate(false);
+			
 		} else {
 			FB.api({
 			    method  : 'pages.isFan',

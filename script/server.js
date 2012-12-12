@@ -3,7 +3,7 @@ var server = new function() {
 	
 	$o.getPageSettings = function(gallery_id, callback) {
 		$.ajax({
-			url         : environment.server_url + '/page_settings.jsp',
+			url         : environment.server_url + '/page_settings.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id
@@ -25,7 +25,7 @@ var server = new function() {
 	
 	$o.getPicturesCount = function(gallery_id, callback) {
 		$.ajax({
-			url         : environment.server_url + '/pictures_count.jsp',
+			url         : environment.server_url + '/pictures_count.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id
@@ -47,7 +47,7 @@ var server = new function() {
 	
 	$o.getAlbums = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/albums.jsp',
+			url         : environment.server_url + '/albums.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -71,7 +71,7 @@ var server = new function() {
 	
 	$o.getLatestPictures = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/latest_pictures.jsp',
+			url         : environment.server_url + '/latest_pictures.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -95,7 +95,7 @@ var server = new function() {
 	
 	$o.getMostPopularPictures = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/most_popular_pictures.jsp',
+			url         : environment.server_url + '/most_popular_pictures.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -119,7 +119,7 @@ var server = new function() {
 	
 	$o.getAlbumPictures = function(gallery_id, album_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/album_pictures.jsp',
+			url         : environment.server_url + '/album_pictures.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -144,7 +144,7 @@ var server = new function() {
 	
 	$o.logPictureView = function(gallery_id, album_id, picture_id) {
 		$.ajax({
-			url         : environment.server_url + '/log_picture_view.jsp',
+			url         : environment.server_url + '/log_picture_view.php',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -158,7 +158,7 @@ var server = new function() {
 	
 	$o.logUserAccess = function(gallery_id, user_facebook_id, user_name, user_email) {
 		$.ajax({
-			url         : environment.server_url + '/log_user_access.jsp',
+			url         : environment.server_url + '/log_user_access.php',
 			data        : {
 				method           : 'get',
 				gallery_id       : gallery_id,

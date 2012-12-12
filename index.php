@@ -2,11 +2,14 @@
 	require_once('fb-sdk/facebook.php');
 
 	$facebook = new Facebook(array(
-		'appId' => '246939962100833',
-		'secret' => 'cc3101fdddd7c955306ead5649aaec42'
+		'appId' => '449490838419909',
+		'secret' => '305b056f6396a5c0839281fdedd4a279'
 	));
 
-	$facebook_user_id = $facebook->getUser();
+	$signed_request = $facebook->getSignedRequest();
+	
+    $page_id = $signed_request["page"]["id"];
+    $liked_page = $signed_request["page"]["liked"];
 ?>
 <html>
     <head>
@@ -32,7 +35,9 @@
 			
             environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
 		
-            var page_id = 442893865746848, gallery_id = 1;
+            var gallery_id = '<?= $_GET['gallery'] ?>',
+            	liked = <?= $liked_page ? 'true' : 'false' ?>,
+            	page_id = '<?= $page_id ?>';
         </script>
 
         <script src="script/like_gate.js"></script>

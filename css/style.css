@@ -132,14 +132,14 @@ body {
 .tab .album {
     float: left;
     width: 232px;
-    height: 232px;
+    height: 240px;
+    overflow: hidden;
     text-align: center;
     margin: 12px;
     cursor: pointer;
 }
 
 .tab .album img {
-    width: 196px;
     height: 196px;
     margin-bottom: 8px;
 }

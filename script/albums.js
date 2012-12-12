@@ -1,3 +1,5 @@
+var albums_offset = 0, albums_per_page = 20;
+
 function renderAlbum(album) {
 	var html = $('<div/>');
 	
@@ -44,12 +46,48 @@ function renderAlbum(album) {
 	return html;
 }
 
-function loadAlbums() {
-	server.getAlbums(gallery_id, 0, 20, function(success, response) {
+function loadAlbums(callback) {
+	server.getAlbums(gallery_id, albums_offset, albums_per_page, function(success, response) {
 		if (success) {
 			response.albums.forEach(function(album) {
-				$('#albums').append(renderAlbum(album));
+				$('#albums .load_more').before(renderAlbum(album));
 			});
+			
+			if (callback) {
+				callback();
+			}
 		}
 	});
+}
+
+function loadFirstAlbums() {
+    $('#albums').empty().append(
+        $('<div/>')
+        .addClass('load_more')
+        .append(
+            $('<a/>')
+            .addClass('rect title')
+            .html('Load more')
+            .click(function(event) {
+            	albums_offset += albums_per_page;
+            	
+                var load_more = $(event.target).closest('.load_more');
+                load_more.children('img').show();
+                load_more.children('a').hide();
+						
+                loadAlbums(function() {
+                    load_more.children('img').hide();
+                    load_more.children('a').show();
+                });
+            })
+        )
+        .append(
+            $('<img/>')
+            .addClass('rect')
+            .attr('src', 'img/ajax-loader.gif')
+            .hide()
+        )
+    );
+    
+    loadAlbums();
 }

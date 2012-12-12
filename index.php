@@ -66,7 +66,7 @@
                         $('.selector[data-tab=albums] .count').html(response.album_count);
                         $('.selector[data-tab=latest_pictures] .count').html(response.latest_pictures_count);
 					
-                        loadAlbums();
+                        loadFirstAlbums();
                         createDefaultAlbums();
                     }
                 });

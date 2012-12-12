@@ -46,10 +46,6 @@ function Album(settings) {
         }
 		
         $('#overlay').fadeIn('fast');
-                
-        $('#picture_preview').show().animate({
-            'top': '10px'
-        }, 300);
  
         FB.Canvas.getPageInfo(function(info) {
             var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;

@@ -56,7 +56,7 @@
             
             events.bind('user_identified', function(event, user_id) {
             	FB.api('/me', function(response) {
-	            	server.logUserAccess(gallery_id, user_id, response.name, '');
+	            	server.logUserAccess(gallery_id, user_id, response.name, response.email);
 				});
             });
 		

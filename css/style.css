@@ -62,12 +62,12 @@ body {
 }
 
 #selectors {
-    width: 770px;
+    width: 735px;
 }
 
 .selector {
     float: left;
-    width: 206px;
+    width: 194px;
     padding: 10px 20px;
     background-color: #F2F4F8;  /* CUSTOMIZE */
     margin: 0px 5px;
@@ -118,12 +118,12 @@ body {
 }
 
 .tab .picture img {
-    height: 186px;
+    height: 177px;
 }
 
 .tab .picture {
-    width: 186px;
-    height: 186px;
+    width: 177px;
+    height: 177px;
     overflow: hidden;
     float: left;
     border: 1px solid #CCC;  /* CUSTOMIZE */
@@ -133,8 +133,8 @@ body {
 
 .tab .album {
     float: left;
-    width: 232px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     overflow: hidden;
     text-align: center;
     margin: 12px;
@@ -142,7 +142,7 @@ body {
 }
 
 .tab .album img {
-    height: 196px;
+    height: 177px;
     margin-bottom: 8px;
 }
 

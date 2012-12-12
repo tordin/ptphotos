@@ -21,13 +21,12 @@ var facebook_connector = new function() {
 			if (response.status == 'connected') {
 				events.fire('user_identified', FB.getUserID());
 			} else {
-				FB.ui({
-					'method' : 'oauth'
-				}, function(response) {
-					if (response.installed) {
-						events.fire('user_identified', FB.getUserID());
+				FB.login(function(response) {
+					if (response.status == 'connected') {
+						//events.fire('user_identified', FB.getUserID());
+                                                window.location.reload();
 					}
-				});
+				},{scope: 'email'});
 			}
 	    });
 	});

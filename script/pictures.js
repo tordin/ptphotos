@@ -45,14 +45,14 @@ function Album(settings) {
             $('.img-control.next').toggleClass('invisible', true);
         }
 		
-		$('#overlay').fadeIn('fast');
+        $('#overlay').fadeIn('fast');
  
-		FB.Canvas.getPageInfo(function(info) {
-			var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
+        FB.Canvas.getPageInfo(function(info) {
+            var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
 	                
-			$('#picture_preview').show().animate({
-				'top': scroll_top + 'px'
-			}, 300);
+            $('#picture_preview').show().animate({
+                'top': scroll_top + 'px'
+            }, 300);
         });
 	 
         server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);
@@ -72,15 +72,15 @@ function Album(settings) {
         return html;
     }
 	
-	function loadPictures(callback) {
-		settings.load(last_loaded_picture, pictures_per_page, function(loaded_pictures) {
-			pictures = pictures.concat(loaded_pictures);
+    function loadPictures(callback) {
+        settings.load(last_loaded_picture, pictures_per_page, function(loaded_pictures) {
+            pictures = pictures.concat(loaded_pictures);
 			
-			loaded_pictures.forEach(function(picture, k) {
-				$('#' + settings.target + ' .load_more').before(renderPicture(picture, last_loaded_picture + k));
-			});
+            loaded_pictures.forEach(function(picture, k) {
+                $('#' + settings.target + ' .load_more').before(renderPicture(picture, last_loaded_picture + k));
+            });
 		
-			last_loaded_picture = pictures.length;
+            last_loaded_picture = pictures.length;
 			
             if (callback) {
                 callback();

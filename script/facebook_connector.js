@@ -23,7 +23,8 @@ var facebook_connector = new function() {
 			} else {
 				FB.login(function(response) {
 					if (response.status == 'connected') {
-						events.fire('user_identified', FB.getUserID());
+						//events.fire('user_identified', FB.getUserID());
+                                                window.location.reload();
 					}
 				},{scope: 'email'});
 			}

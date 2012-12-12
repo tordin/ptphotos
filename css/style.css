@@ -117,12 +117,14 @@ body {
     padding: 4px;
 }
 
-.tab .picture, .tab .picture img {
-    width: 186px;
+.tab .picture img {
     height: 186px;
 }
 
 .tab .picture {
+    width: 186px;
+    height: 186px;
+    overflow: hidden;
     float: left;
     border: 1px solid #CCC;  /* CUSTOMIZE */
     margin: 2px;

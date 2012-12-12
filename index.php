@@ -26,7 +26,7 @@
         <script>
             var environment = {
                 facebook_id : '449490838419909',
-                server_url  : window.location.protocol + '//tordin.fortis4.com/ptphotos/server',
+                server_url  : window.location.protocol + '//fortis4.com/ptphotos/server',
                 namespace   : 'ptphotos'
             };
 			

@@ -1,3 +1,13 @@
+<?php
+	require_once('fb-sdk/facebook.php');
+
+	$facebook = new Facebook(array(
+		'appId' => '246939962100833',
+		'secret' => 'cc3101fdddd7c955306ead5649aaec42'
+	));
+
+	$facebook_user_id = $facebook->getUser();
+?>
 <html>
     <head>
         <title>PT Photos</title>

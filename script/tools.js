@@ -8,7 +8,7 @@ var events = new function() {
             priority : 0
         });
 
-        names.split(' ').forEach(function(name) {
+        safeSplit(names, ' ').forEach(function(name) {
             if (!hooks[name]) {
                 hooks[name] = [];
             }
@@ -24,7 +24,7 @@ var events = new function() {
     };
 
     $o.unbind = function(names, method) {
-        names.split(' ').forEach(function(name) {
+        safeSplit(names, ' ').forEach(function(name) {
             if (hooks[name]) {
                 if (!method) {
                     hooks[name] = [];
@@ -186,4 +186,8 @@ function pickRandom(list, amount) {
 	
 	
 	return getKeys(map);
+}
+
+function safeSplit(s, needle) {
+    return (s.length==0 || s.indexOf(needle) == -1) ? [] : s.split(needle);
 }

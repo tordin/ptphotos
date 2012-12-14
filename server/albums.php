@@ -19,7 +19,7 @@ if (isset($lengthParameter)) {
 
 for ($i = 0; $i < $length; $i++) {
 ?>
-	{ "album_id":"<?= $offset + $i + 1 ?>", "cover_picture_thumb_url":"http://fortis4.com/ptphotos/server/images/pic<?= $i + 1 ?>.jpg", "title":"Album <?= $i + 1 ?>", date:"2012-08-23", picture_count:15 }<?= ($i < $length - 1 ? ',' : '') ?>
+	{ "album_id":"<?= $offset + $i + 1 ?>", "cover_picture_thumb_url":"http://fortis4.com/ptphotos/server/images/pic<?= $i + 1 ?>.jpg", "title":"Album <?= $offset + $i + 1 ?>", date:"2012-08-23", picture_count:15 }<?= ($i < $length - 1 ? ',' : '') ?>
 <?php
 }
 ?>

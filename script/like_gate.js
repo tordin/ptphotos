@@ -16,7 +16,7 @@ var waiter = new Waiter(2, function(all_done, box) {
 		} else {
 			FB.api({
 			    method  : 'pages.isFan',
-			    page_id : page_id,
+			    page_id : page_id
 			}, function(response) {
 				likeGate(!response);
 		    });			

@@ -14,7 +14,7 @@ function renderAlbum(album) {
 	).append(
 		$('<div/>')
             .addClass('label')
-			.html(album.date + ' - ' + album.picture_count + ' photos')
+			.html(parseServerDate(album.date) + ' - ' + album.picture_count + ' photos')
 	).click(function() {
 		events.fire('tab_selected', 'album_pictures');
 		
@@ -27,7 +27,7 @@ function renderAlbum(album) {
 			).append(
 				$('<div/>')
 		            .addClass('label')
-					.html(album.date + ' - ' + album.picture_count + ' photos')
+					.html(parseServerDate(album.date) + ' - ' + album.picture_count + ' photos')
 			);
 
 		new Album({

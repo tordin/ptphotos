@@ -191,3 +191,21 @@ function pickRandom(list, amount) {
 function safeSplit(s, needle) {
     return (s.length==0 || s.indexOf(needle) == -1) ? [] : s.split(needle);
 }
+
+function formatDate(timestamp) {
+    var date = new Date(timestamp);
+    var day = (date.getDate() < 10) ? ('0' + date.getDate()) : date.getDate();
+    var month = ((date.getMonth()+1) < 10) ? ('0' + (date.getMonth()+1)) : (date.getMonth()+1);
+    var year = date.getFullYear();
+    return (year + '-' + month + '-' + day);
+}
+
+function parseServerDate(dateStr) {
+    var parts = safeSplit(dateStr, 'T');
+    var date = parts[0];
+    var dateparts = safeSplit(date, '-');
+    var year = dateparts[0];
+    var month = dateparts[1];
+    var day = dateparts[2];
+    return day + '/' + month + '/' + year;
+}

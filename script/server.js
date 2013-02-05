@@ -2,6 +2,7 @@ var server = new function() {
 	var $o = this;
 	
 	$o.getPageSettings = function(gallery_id, callback) {
+            /*
 		$.ajax({
 			url         : environment.server_url + '/page_settings.php',
 			data        : {
@@ -21,14 +22,16 @@ var server = new function() {
 				callback(false);	
 			}			
 		});
+                */
+               callback(true, {"likers_only":true});
 	};
 	
 	$o.getPicturesCount = function(gallery_id, callback) {
 		$.ajax({
-			url         : environment.server_url + '/pictures_count.php',
+			url         : 'http://77.233.34.14/api/PictureCount',
 			data        : {
 				method     : 'get',
-				gallery_id : gallery_id
+				id : gallery_id
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -47,7 +50,7 @@ var server = new function() {
 	
 	$o.getAlbums = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/albums.php',
+			url         : 'http://77.233.34.14/api/Albums',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
@@ -70,13 +73,21 @@ var server = new function() {
 	};
 	
 	$o.getLatestPictures = function(gallery_id, offset, length, callback) {
+            
+                var now = new Date().getTime();
+                var last_month = now - 3000000000;
+                var startdate = formatDate(now);
+                var endate = formatDate(last_month);
+            
 		$.ajax({
-			url         : environment.server_url + '/latest_pictures.php',
+			url         : 'http://77.233.34.14/api/Albums',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,
 				offset     : offset ? offset : 0,
-				length     : length ? length : 0
+				length     : length ? length : 0,
+                                startdate  : startdate,
+                                endate     : endate
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -95,10 +106,10 @@ var server = new function() {
 	
 	$o.getMostPopularPictures = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/most_popular_pictures.php',
+			url         : 'http://77.233.34.14/api/Pictures',
 			data        : {
 				method     : 'get',
-				gallery_id : gallery_id,
+				facebookpage_id : gallery_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0
 			},
@@ -119,7 +130,7 @@ var server = new function() {
 	
 	$o.getAlbumPictures = function(gallery_id, album_id, offset, length, callback) {
 		$.ajax({
-			url         : environment.server_url + '/album_pictures.php',
+			url         : 'http://77.233.34.14/api/Pictures',
 			data        : {
 				method     : 'get',
 				gallery_id : gallery_id,

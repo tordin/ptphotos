@@ -15,7 +15,16 @@
     <head>
         <title>PT Photos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
+<?php
+    if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'],'MSIE') !== false)) {
+?>
+        <meta http-equiv="X-UA-Compatible" content="IE=100" > <!-- IE9 mode -->
+        <script type="text/javascript" src="script/external/ie.js"></script>
+<?php
+    }
+?>
+
         <link rel="stylesheet" href="css/style.css" />
         <!--<link rel="stylesheet" href="css/custom-sample.css" />-->
 

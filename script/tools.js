@@ -8,7 +8,7 @@ var events = new function() {
             priority : 0
         });
 
-        safeSplit(names, ' ').forEach(function(name) {
+        names.split(',').forEach(function(name) {
             if (!hooks[name]) {
                 hooks[name] = [];
             }
@@ -24,7 +24,7 @@ var events = new function() {
     };
 
     $o.unbind = function(names, method) {
-        safeSplit(names, ' ').forEach(function(name) {
+        names.split(',').forEach(function(name) {
             if (hooks[name]) {
                 if (!method) {
                     hooks[name] = [];
@@ -188,10 +188,6 @@ function pickRandom(list, amount) {
 	return getKeys(map);
 }
 
-function safeSplit(s, needle) {
-    return (s.length==0 || s.indexOf(needle) == -1) ? [] : s.split(needle);
-}
-
 function formatDate(timestamp) {
     var date = new Date(timestamp);
     var day = (date.getDate() < 10) ? ('0' + date.getDate()) : date.getDate();
@@ -201,9 +197,9 @@ function formatDate(timestamp) {
 }
 
 function parseServerDate(dateStr) {
-    var parts = safeSplit(dateStr, 'T');
+    var parts = dateStr.split('T');
     var date = parts[0];
-    var dateparts = safeSplit(date, '-');
+    var dateparts = date.split('-');
     var year = dateparts[0];
     var month = dateparts[1];
     var day = dateparts[2];

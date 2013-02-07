@@ -156,7 +156,7 @@ function createDefaultAlbums() {
         load     : function(offset, length, callback) {
             server.getMostPopularPictures(gallery_id, offset, length, function(success, response) {
                 if (success) {
-                    callback(response.pictures);
+                    callback(response); //response.pictures
                 }
             });
         } 

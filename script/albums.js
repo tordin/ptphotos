@@ -36,7 +36,7 @@ function renderAlbum(album) {
 			load     : function(offset, length, callback) {
 				server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
 					if (success) {
-						callback(response.pictures);
+						callback(response); //response.pictures
 					}
 				});
 			} 

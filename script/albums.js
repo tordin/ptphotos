@@ -49,7 +49,7 @@ function renderAlbum(album) {
 function loadAlbums(callback) {
 	server.getAlbums(gallery_id, albums_offset, albums_per_page, function(success, response) {
 		if (success) {
-			response.albums.forEach(function(album) {
+			response.forEach(function(album) { //response.albums.forEach
 				$('#albums .load_more').before(renderAlbum(album));
 			});
 			

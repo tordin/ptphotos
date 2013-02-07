@@ -31,8 +31,6 @@
         <script src="//connect.facebook.net/en_US/all.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
-	<script src="script/ie.js"></script>
-
         <script src="script/tools.js"></script>
         <script src="script/facebook_connector.js"></script>
         <script src="script/server.js"></script>

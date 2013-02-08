@@ -36,8 +36,8 @@ if (isset($_GET['picture_id'])) {
         <?php
         if ($shared_picture) {
             ?>
-            <meta property="og:title" content="<?= $title ?>"/>
-            <meta property="og:image" content="<?= $picture_url ?>"/>
+            <meta property="og:title" content="<?= $title ?>" />
+            <meta property="og:image" content="<?= $picture_url ?>" />
             <?php
         }
         ?>

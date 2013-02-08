@@ -27,7 +27,7 @@ function Album(settings) {
 
         $('#large_picture_src').attr('src', pictures[i].picture_url);
         
-        var like_url = 'http://fortis4.com/ptphotos/';
+        var like_url = 'http://fortis4.com/ptphotos/?page_id=' + page_id + '&album_id=' + settings.album_id + '&picture_id=' + pictures[i].picture_id;
         
         FB.XFBML.parse($('#picture_preview .facebookLike').html(
             '<fb:like layout="button_count" href="' + like_url + '"></fb:like>'

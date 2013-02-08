@@ -179,22 +179,24 @@ $app_data = $signed_request["app_data"];
         </div>
 
         <div id="picture_preview" class="rect">
-            <img id="large_picture_src" src="img/pixel.png" />
-
+            
+            <div class="img-close-preview">
+                <img src="img/close.png" />
+            </div>
+            
             <div class="img-control-wrapper">
                 <div class="img-control previous"><img src="img/prev.png" /></div>
                 <div class="img-control next"><img src="img/next.png" /></div>
 
                 <div class="clearB"></div>
             </div>
+            
+            <img id="large_picture_src" src="img/pixel.png" />
 
             <div class="facebookLike"></div>
 
             <div class="facebookComments"></div>
 
-            <div class="img-close-preview">
-                <img src="img/close.png" />
-            </div>
         </div>
     </body>
 </html>

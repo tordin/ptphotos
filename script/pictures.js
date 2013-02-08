@@ -23,16 +23,8 @@ function Album(settings) {
             open(current_picture + delta);			
         }
     }
-	
-    function open(i) {
-        current_picture = i;
-        
-        if (current_picture > pictures.length - 4) {
-            loadPictures();
-        }
-
-        openPicture(pictures[i], settings.album_id);
     
+    function updateArrows() {
         if (current_picture > 0) {
             $('.img-control.previous').toggleClass('invisible', false).click(function() {
                 navigate(-1);
@@ -48,6 +40,18 @@ function Album(settings) {
         } else {
             $('.img-control.next').toggleClass('invisible', true);
         }
+    }
+	
+    function open(i) {
+        current_picture = i;
+        
+        if (current_picture > pictures.length - 4) {
+            loadPictures();
+        }
+
+        openPicture(pictures[i], settings.album_id);
+        
+        updateArrows();
     }
 
     function renderPicture(picture, i) {
@@ -87,6 +91,8 @@ function Album(settings) {
             last_loaded_picture = pictures.length;
 			
             waiting_pictures_to_load = false;
+            
+            updateArrows();
             
             if (callback) {
                 callback();

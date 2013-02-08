@@ -25,8 +25,7 @@ function Album(settings) {
     function open(i) {
         current_picture = i;
 
-        open(pictures[i], settings.album_id);
-
+        openPicture(pictures[i], settings.album_id);
     
         if (current_picture > 0) {
             $('.img-control.previous').toggleClass('invisible', false).click(function() {

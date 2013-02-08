@@ -26,6 +26,12 @@ function Album(settings) {
         current_picture = i;
 
         $('#large_picture_src').attr('src', pictures[i].picture_url);
+        
+        var like_url = 'http://fortis4.com/ptphotos/';
+        
+        FB.XFBML.parse($('#picturePreview .facebookLike').html(
+            '<fb:like layout="button_count" href="' + like_url + '"></fb:like>'
+        )[0]);
 		
         $('.img-control').unbind('click');
 		

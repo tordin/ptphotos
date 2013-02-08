@@ -187,6 +187,8 @@ if (isset($_GET['picture_id'])) {
                 <div class="clearB"></div>
             </div>
 
+            <div class="facebookLike"></div>
+
             <div class="img-close-preview">
                 <img src="img/close.png" />
             </div>

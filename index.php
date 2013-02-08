@@ -1,29 +1,55 @@
 <?php
-	require_once('fb-sdk/facebook.php');
+require_once('fb-sdk/facebook.php');
 
-	$facebook = new Facebook(array(
-		'appId' => '449490838419909',
-		'secret' => '305b056f6396a5c0839281fdedd4a279'
-	));
+$facebook = new Facebook(array(
+            'appId' => '449490838419909',
+            'secret' => '305b056f6396a5c0839281fdedd4a279'
+        ));
 
-	$signed_request = $facebook->getSignedRequest();
-	
-    $page_id = $signed_request["page"]["id"];
-    $liked_page = $signed_request["page"]["liked"];
+$signed_request = $facebook->getSignedRequest();
+
+$page_id = $signed_request["page"]["id"];
+$liked_page = $signed_request["page"]["liked"];
+
+$shared_picture = false;
+
+if (isset($_GET['picture_id'])) {
+
+    $shared_picture = true;
+
+    $picture_id = $_GET['picture_id'];
+
+    //getting picture url from id
+    $response = file_get_contents('http://77.233.34.14/api/Pictures/' . $picture_id);
+    $json_response = json_decode($response);
+    $picture_url = $json_response->picture_url;
+
+    $title = $_GET['title'];
+    $album_id = $_GET['album_id'];
+}
 ?>
 <html>
     <head>
         <title>PT Photos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<?php
-        if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'],'MSIE') !== false)) {
-?>
+        <?php
+        if ($shared_picture) {
+            ?>
+            <meta property="og:title" content="<?= $title ?>"/>
+            <meta property="og:image" content="<?= $picture_url ?>"/>
+            <?php
+        }
+        ?>
+
+        <?php
+        if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
+            ?>
             <meta http-equiv="X-UA-Compatible" content="IE=100" > <!-- IE9 mode -->
             <script type="text/javascript" src="script/external/ie.js"></script>
-<?php
+            <?php
         }
-?>
+        ?>
 
         <link rel="stylesheet" href="css/style.css" />
         <!--<link rel="stylesheet" href="css/custom-sample.css" />-->
@@ -45,8 +71,8 @@
             environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
 		
             var gallery_id = '<?= $_GET['gallery'] ?>',
-            	liked = <?= $liked_page ? 'true' : 'false' ?>,
-            	page_id = '<?= $page_id ?>';
+            liked = <?= $liked_page ? 'true' : 'false' ?>,
+            page_id = '<?= $page_id ?>';
         </script>
 
         <script src="script/like_gate.js"></script>
@@ -64,9 +90,9 @@
             });
             
             events.bind('user_identified', function(event, user_id) {
-            	FB.api('/me', function(response) {
-	            	server.logUserAccess(gallery_id, user_id, response.name, response.email);
-				});
+                FB.api('/me', function(response) {
+                    server.logUserAccess(gallery_id, user_id, response.name, response.email);
+                });
             });
 		
             events.bind('content_released', function(event) {
@@ -82,7 +108,7 @@
             });
 		
             events.bind('tab_selected', function(event, tab) {
-            	$('#content_title, #album_pictures').empty();
+                $('#content_title, #album_pictures').empty();
             	
                 $('.tab').hide();
                 $('#' + tab).show();

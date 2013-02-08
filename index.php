@@ -75,7 +75,7 @@ $app_data = $signed_request["app_data"];
                 
                 //album?
                 
-                server.getPicture(data.picture_id, function(success, response) {
+                server.getPicture(gallery_id, data.picture_id, function(success, response) {
                     if (success) {
                         openPicture(response, data.album_id);
                     };

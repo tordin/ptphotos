@@ -31,7 +31,7 @@ body {
 }
 
 .selector.selected {
-    background-color: #007a16;  /* CUSTOMIZE */
+    background-color: red;  /* CUSTOMIZE */
 }
 .selector.selected .count, .selector.selected .label {
     color: white;  /* CUSTOMIZE */

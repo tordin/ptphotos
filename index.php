@@ -106,7 +106,6 @@
 
                 <div class="rect">
                     <div id="selectors">
-
                         <div class="selector selected" data-tab="albums">
                             <img src="img/icn-album.png" class="floatL" />
                             <div class="floatL">
@@ -135,12 +134,10 @@
                         </div>
 
                         <div class="clearB"></div>
-
                     </div>
                 </div>
 
                 <div class="rect">
-
                     <div id="content_title" class="tab-title"></div>
 
                     <div id="albums" class="tab"></div>
@@ -160,6 +157,7 @@
             <div class="img-control-wrapper">
                 <div class="img-control previous"><img src="img/prev.png" /></div>
                 <div class="img-control next"><img src="img/next.png" /></div>
+
                 <div class="clearB"></div>
             </div>
 

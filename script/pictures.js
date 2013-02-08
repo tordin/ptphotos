@@ -127,9 +127,9 @@ function openPicture(picture, album_id) {
     $('#large_picture_src').attr('src', picture.picture_url);
     
     var pic_url = 'http://fortis4.com/ptphotos/share.php?page_id=' + page_id + '&album_id=' + album_id + '&picture_id=' + picture.picture_id;
-    
+
     FB.XFBML.parse($('#picture_preview .facebookLike').html(
-        '<fb:like layout="button_count" data-show-faces="true" href="' + pic_url + '"></fb:like>'
+        '<div class="fb-like" data-send="true" data-width="470" data-show-faces="true" data-href="' + pic_url + '"></div>'
     )[0]);
     
     FB.XFBML.parse($('#picture_preview .facebookComments').html(

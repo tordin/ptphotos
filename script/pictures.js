@@ -13,6 +13,7 @@ function Album(settings) {
 	
     var last_loaded_picture = 0,
     waiting_pictures_to_load = false,
+    no_more_pictures_to_load = false,
     first_load_of_pictures = 30,
     pictures_per_page = 15,
     pictures = [],
@@ -69,7 +70,7 @@ function Album(settings) {
     }
 	
     function loadPictures(callback) {
-        if (waiting_pictures_to_load) {
+        if (waiting_pictures_to_load || no_more_pictures_to_load) {
             return;
         }
         
@@ -82,6 +83,12 @@ function Album(settings) {
         }
     
         settings.load(last_loaded_picture, pictures_to_load, function(loaded_pictures) {
+            if (loaded_pictures.length < pictures_to_load) {
+                no_more_pictures_to_load = true;
+                
+                $('#' + settings.target + ' .load_more').hide();
+            }
+        
             pictures = pictures.concat(loaded_pictures);
 			
             loaded_pictures.forEach(function(picture, k) {

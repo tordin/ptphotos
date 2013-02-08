@@ -179,7 +179,7 @@ $app_data = $signed_request["app_data"];
         </div>
 
         <div id="picture_preview" class="rect">
-            
+
             <div class="img-close-preview">
                 <img src="img/close.png" />
             </div>

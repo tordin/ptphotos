@@ -119,6 +119,8 @@ function Album(settings) {
             closeImage();
         }
     });
+    
+    FB.Canvas.scrollTo(0);
 	
     loadPictures();
 }

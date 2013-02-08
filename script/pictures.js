@@ -1,11 +1,11 @@
 function closeImage() {
-       $('#picture_preview').animate({
-               'top' : '-500px'
-       }, 200, function() {
-               $('#picture_preview').hide();
-       });
+    $('#picture_preview').animate({
+        'top' : '-500px'
+    }, 200, function() {
+        $('#picture_preview').hide();
+    });
  
-       $('#overlay').fadeOut('fast');
+    $('#overlay').fadeOut('fast');
 }
 
 function Album(settings) {

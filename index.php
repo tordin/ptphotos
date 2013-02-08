@@ -17,12 +17,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <?php
-    if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'],'MSIE') !== false)) {
+        if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'],'MSIE') !== false)) {
 ?>
-        <meta http-equiv="X-UA-Compatible" content="IE=100" > <!-- IE9 mode -->
-        <script type="text/javascript" src="script/external/ie.js"></script>
+            <meta http-equiv="X-UA-Compatible" content="IE=100" > <!-- IE9 mode -->
+            <script type="text/javascript" src="script/external/ie.js"></script>
 <?php
-    }
+        }
 ?>
 
         <link rel="stylesheet" href="css/style.css" />
@@ -150,7 +150,6 @@
 
                     <div class="clearB"></div>
                 </div>
-
             </div>
 
         </div>
@@ -165,29 +164,6 @@
             <div class="img-close-preview">
                 <img src="img/close.png" />
             </div>
-        </div>
-
-        <div class="hidden">
-
-            <div id="tpl_album_item">
-                <div id="album_item_ALBUM_ID" class="album-item">
-                    IMG_CODE
-                    <div class="title">ALBUM_TITLE</div>
-                    <div class="label">ALBUM_DATE - ALBUM_PICTURE_COUNT photos</div>
-                </div>
-            </div>
-
-            <div id="tpl_picture_item">
-                <div id="picture_item_PICTURE_ID" class="img-item">
-                    IMG_CODE
-                </div>
-            </div>
-
-            <div id="tpl_content_title">
-                <div class="title">ALBUM_TITLE</div>
-                <div class="label">ALBUM_DATE - ALBUM_PICTURE_COUNT photos</div>
-            </div>
-
         </div>
     </body>
 </html>

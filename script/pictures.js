@@ -129,7 +129,7 @@ function openPicture(picture, album_id) {
     $('#large_picture_src')
         .attr('src', picture.picture_url)
         .unbind('load')
-        .bind(function() {
+        .load(function() {
             $('#picture_preview .img-spinner').hide();
         });
     

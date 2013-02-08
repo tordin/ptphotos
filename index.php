@@ -125,7 +125,7 @@ $app_data = $signed_request["app_data"];
             <div id="like-gate" class="rect text-center" style="display: none;">
                 <img src="img/like.png" />
                 <br/><br/>
-                PLEASE LIKE THIS PAGE TO GET ACCESS
+                Please click the "Like" button at the top of the page to access this gallery.
             </div>
 
             <div id="content" style="display: none;">

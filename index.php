@@ -28,7 +28,7 @@ $app_data = $signed_request["app_data"];
         ?>
 
         <link rel="stylesheet" href="css/style.css" />
-        <!--<link rel="stylesheet" href="css/custom-sample.css" />-->
+        <link rel="stylesheet" href="css/custom-<?= $page_id ?>.css" />
 
         <script src="//connect.facebook.net/en_US/all.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>

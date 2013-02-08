@@ -120,9 +120,17 @@ function Album(settings) {
         }
     });
     
-    FB.Canvas.scrollTo(0);
+    $('#' + settings.target + ' .load_more').before(
+        $('<img/>')
+            .addClass('initial-loader')
+            .attr('src', 'img/ajax-loader.gif')
+    );
 	
-    loadPictures();
+    loadPictures(function() {
+        $('#' + settings.target + ' .initial-loader').remove();
+    });
+    
+    FB.Canvas.scrollTo(0);
 }
 
 function openPicture(picture, album_id) {

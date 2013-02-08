@@ -151,7 +151,7 @@ function openPicture(picture, album_id) {
     
     $('.img-control').toggleClass('invisible', true);
  
-    server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);
+    server.logPictureView(gallery_id, album_id, picture.picture_id);
 }
 
 function createDefaultAlbums() {

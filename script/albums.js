@@ -1,4 +1,6 @@
-var albums_offset = 0, albums_per_page = 20;
+var albums_offset = 0,
+    albums_per_page = 18,
+    waiting_to_load_albums = false;
 
 function renderAlbum(album) {
 	var html = $('<div/>');
@@ -51,8 +53,18 @@ function openAlbum(album) {
 }
 
 function loadAlbums(callback) {
+    if (waiting_to_load_albums) {
+        return;
+    }
+    
+    waiting_to_load_albums = true;
+
 	server.getAlbums(gallery_id, albums_offset, albums_per_page, function(success, response) {
 		if (success) {
+            if (response.length < albums_per_page) {
+                $('#albums .load_more').hide();
+            }
+        
 			response.forEach(function(album) { //response.albums.forEach
 				$('#albums .load_more').before(renderAlbum(album));
 			});
@@ -61,6 +73,8 @@ function loadAlbums(callback) {
 				callback();
 			}
 		}
+        
+        waiting_to_load_albums = false;
 	});
 }
 

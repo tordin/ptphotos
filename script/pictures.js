@@ -124,7 +124,14 @@ function Album(settings) {
 }
 
 function openPicture(picture, album_id) {
-    $('#large_picture_src').attr('src', picture.picture_url);
+    $('#picture_preview .img-spinner').show();
+    
+    $('#large_picture_src')
+        .attr('src', picture.picture_url)
+        .unbind('load')
+        .bind(function() {
+            $('#picture_preview .img-spinner').hide();
+        });
     
     var pic_url = 'http://fortis4.com/ptphotos/share.php?page_id=' + page_id + '&album_id=' + album_id + '&picture_id=' + picture.picture_id;
 
@@ -136,7 +143,7 @@ function openPicture(picture, album_id) {
         '<div class="fb-comments" data-href="' + pic_url + '" data-width="720" data-num-posts="10"></div>'
     )[0]);
     
-    $('.img-control').unbind('click');
+    $('.img-control').unbind('click').toggleClass('invisible', true);
     
     $('#overlay').fadeIn('fast');
 
@@ -147,8 +154,6 @@ function openPicture(picture, album_id) {
             'top': scroll_top + 'px'
         }, 300);
     });
-    
-    $('.img-control').toggleClass('invisible', true);
  
     server.logPictureView(gallery_id, album_id, picture.picture_id);
 }

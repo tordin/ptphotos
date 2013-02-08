@@ -187,6 +187,7 @@ $app_data = $signed_request["app_data"];
             <div id="large_picture_controls" class="img-control-wrapper">
                 <div class="img-control previous"><img src="img/prev.png" /></div>
                 <div class="img-control next"><img src="img/next.png" /></div>
+                <div class="img-spinner" style="display: none;"><img src="img/spinner.gif" /></div>
 
                 <div class="clearB"></div>
             </div>

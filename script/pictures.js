@@ -12,6 +12,7 @@ function Album(settings) {
     var $t = this;
 	
     var last_loaded_picture = 0,
+    first_load_of_pictures = 30,
     pictures_per_page = 15,
     pictures = [],
     current_picture = -1;
@@ -59,7 +60,13 @@ function Album(settings) {
     }
 	
     function loadPictures(callback) {
-        settings.load(last_loaded_picture, pictures_per_page, function(loaded_pictures) {
+        var pictures_to_load = pictures_per_page;
+        
+        if (!pictures.length) {
+            pictures_to_load = first_load_of_pictures;
+        }
+    
+        settings.load(last_loaded_picture, pictures_to_load, function(loaded_pictures) {
             pictures = pictures.concat(loaded_pictures);
 			
             loaded_pictures.forEach(function(picture, k) {

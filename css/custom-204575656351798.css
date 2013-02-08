@@ -1,17 +1,17 @@
 body {
-    background: #ffa8f4; /* CUSTOMIZE */
+    background: #d8ffc4; /* CUSTOMIZE */
     font-family: helvetica, arial, verdana;
     padding: 0;
     margin: 0;
 }
 
 .rect {
-    border: 1px solid #ff00dc;  /* CUSTOMIZE */
+    border: 1px solid #d80000;  /* CUSTOMIZE */
     background: #fff;  /* CUSTOMIZE */
 }
 
 .overlay{
-    background:rgba(255,168,244,0.5); /* CUSTOMIZE */
+    background:rgba(178,0,0,0.5); /* CUSTOMIZE */
 }
 
 .header-banner {
@@ -20,18 +20,18 @@ body {
 }
 
 .selector {
-    background-color: #ffd8f9;  /* CUSTOMIZE */
+    background-color: #ace0b5;  /* CUSTOMIZE */
 }
 .selector .count {
-    color: #ff00dc;  /* CUSTOMIZE */
+    color: #d80000;  /* CUSTOMIZE */
 }
 
 .selector:hover {
-    background-color: #fcc9f4;  /* CUSTOMIZE */
+    background-color: #9befa9;  /* CUSTOMIZE */
 }
 
 .selector.selected {
-    background-color: #e200bd;  /* CUSTOMIZE */
+    background-color: #007a16;  /* CUSTOMIZE */
 }
 .selector.selected .count, .selector.selected .label {
     color: white;  /* CUSTOMIZE */
@@ -43,9 +43,9 @@ body {
 }
 
 .title {
-    color: #ff00dc;  /* CUSTOMIZE */
+    color: #d80000;  /* CUSTOMIZE */
 }
 
 .tab .picture {
-    border: 1px solid #ff00dc;  /* CUSTOMIZE */
+    border: 1px solid #007a16;  /* CUSTOMIZE */
 }

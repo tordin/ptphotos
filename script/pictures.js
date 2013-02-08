@@ -12,6 +12,7 @@ function Album(settings) {
     var $t = this;
 	
     var last_loaded_picture = 0,
+    waiting_pictures_to_load = false,
     first_load_of_pictures = 30,
     pictures_per_page = 15,
     pictures = [],
@@ -20,6 +21,10 @@ function Album(settings) {
     function navigate(delta) {
         if (current_picture + delta >= 0 && current_picture + delta < last_loaded_picture) {
             open(current_picture + delta);			
+        }
+        
+        if (current_picture > pictures.length - 4) {
+            loadPictures();
         }
     }
 	
@@ -60,6 +65,12 @@ function Album(settings) {
     }
 	
     function loadPictures(callback) {
+        if (waiting_pictures_to_load) {
+            return;
+        }
+        
+        waiting_pictures_to_load = true;
+    
         var pictures_to_load = pictures_per_page;
         
         if (!pictures.length) {
@@ -75,6 +86,8 @@ function Album(settings) {
 		
             last_loaded_picture = pictures.length;
 			
+            waiting_pictures_to_load = false;
+            
             if (callback) {
                 callback();
             }

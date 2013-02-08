@@ -214,3 +214,8 @@ body {
 .facebookLike {
     padding: 10px;
 }
+
+.initial-loader {
+    display: block;
+    padding: 20px;
+}

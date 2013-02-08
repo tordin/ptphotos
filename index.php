@@ -64,6 +64,8 @@ $app_data = $signed_request["app_data"];
                 $('.selector').click(function(event) {
                     events.fire('tab_selected', $(event.target).closest('.selector').attr('data-tab'));
                 });
+                
+                FB.Canvas.setAutoGrow();
             });
 
             function parseAppData() {

@@ -1,0 +1,51 @@
+body {
+    background: #ffa8f4; /* CUSTOMIZE */
+    font-family: helvetica, arial, verdana;
+    padding: 0;
+    margin: 0;
+}
+
+.rect {
+    border: 1px solid #ff00dc;  /* CUSTOMIZE */
+    background: #fff;  /* CUSTOMIZE */
+}
+
+.overlay{
+    background:rgba(255,168,244,0.5); /* CUSTOMIZE */
+}
+
+.header-banner {
+    background-image: url(../img/trattoria.jpg); /* CUSTOMIZE */
+    height: 100px; /* CUSTOMIZE */
+}
+
+.selector {
+    background-color: #ffd8f9;  /* CUSTOMIZE */
+}
+.selector .count {
+    color: #ff00dc;  /* CUSTOMIZE */
+}
+
+.selector:hover {
+    background-color: #fcc9f4;  /* CUSTOMIZE */
+}
+
+.selector.selected {
+    background-color: #e200bd;  /* CUSTOMIZE */
+}
+.selector.selected .count, .selector.selected .label {
+    color: white;  /* CUSTOMIZE */
+}
+
+.label {
+    color: #555;  /* CUSTOMIZE */
+    font-size: 12px;
+}
+
+.title {
+    color: #ff00dc;  /* CUSTOMIZE */
+}
+
+.tab .picture {
+    border: 1px solid #ff00dc;  /* CUSTOMIZE */
+}

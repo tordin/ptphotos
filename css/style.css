@@ -173,10 +173,6 @@ body {
     width: 720px;
 }
 
-#large_picture_src:hover + div {
-    display: block;
-}
-
 .img-control-wrapper {
     margin-top: 150px;
     position: absolute;
@@ -208,4 +204,8 @@ body {
     padding: 5px;
     right: 10px;
     cursor: pointer;
+}
+
+.facebookLike {
+    padding: 10px;
 }

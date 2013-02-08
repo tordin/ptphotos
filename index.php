@@ -102,7 +102,11 @@ $app_data = $signed_request["app_data"];
 
         <div class="wrapper">
 
-            <div id="like-gate" class="rect" style="display: none;">LIKE THIS PAGE TO GET ACCESS</div>
+            <div id="like-gate" class="rect text-center" style="display: none;">
+                <img src="img/like.png" />
+                <br/><br/>
+                PLEASE LIKE THIS PAGE TO GET ACCESS
+            </div>
 
             <div id="content" style="display: none;">
                 <div class="rect header-banner"></div>

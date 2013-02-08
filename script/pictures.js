@@ -129,7 +129,7 @@ function openPicture(picture, album_id) {
     var pic_url = 'http://fortis4.com/ptphotos/share.php?page_id=' + page_id + '&album_id=' + album_id + '&picture_id=' + picture.picture_id;
 
     FB.XFBML.parse($('#picture_preview .facebookLike').html(
-        '<div class="fb-like" data-send="true" data-width="470" data-show-faces="false" data-href="' + pic_url + '"></div>'
+        '<div class="fb-like" data-href="' + pic_url + '" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>'
     )[0]);
     
     FB.XFBML.parse($('#picture_preview .facebookComments').html(

@@ -65,6 +65,12 @@ $app_data = $signed_request["app_data"];
                     events.fire('tab_selected', $(event.target).closest('.selector').attr('data-tab'));
                 });
                 
+                $('#large_picture_src').mouseenter(function() {
+                    $('#large_picture_controls').show();
+                }).mouseleave(function() {
+                    $('#large_picture_controls').hide();
+                });
+                
                 FB.Canvas.setAutoGrow();
             });
 
@@ -184,7 +190,7 @@ $app_data = $signed_request["app_data"];
                 <img src="img/close.png" />
             </div>
             
-            <div class="img-control-wrapper">
+            <div id="large_picture_controls" class="img-control-wrapper">
                 <div class="img-control previous"><img src="img/prev.png" /></div>
                 <div class="img-control next"><img src="img/next.png" /></div>
 

@@ -141,7 +141,7 @@ function openPicture(picture, album_id) {
     $('#overlay').fadeIn('fast');
 
     FB.Canvas.getPageInfo(function(info) {
-        var scroll_top = info.scrollTop > 400 ? info.scrollTop - 100 : info.scrollTop;
+        var scroll_top = info.scrollTop;
                 
         $('#picture_preview').show().animate({
             'top': scroll_top + 'px'

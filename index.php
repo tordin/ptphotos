@@ -70,7 +70,7 @@ if (isset($_GET['picture_id'])) {
 			
             environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
 		
-            var gallery_id = '<?= $_GET['gallery'] ?>',
+            var gallery_id = 'Test',
             liked = <?= $liked_page ? 'true' : 'false' ?>,
             page_id = '<?= $page_id ?>';
         </script>

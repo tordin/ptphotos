@@ -9,10 +9,6 @@ $facebook = new Facebook(array(
 
 $signed_request = $facebook->getSignedRequest();
 
-$page_id = $signed_request["page"]["id"]; //undefined when commented/liked
-$liked_page = $signed_request["page"]["liked"];
-$app_data = $signed_request["app_data"];
-
 $picture_id = $_GET['picture_id'];
 $album_id = $_GET['album_id'];
 

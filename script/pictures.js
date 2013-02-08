@@ -27,10 +27,14 @@ function Album(settings) {
 
         $('#large_picture_src').attr('src', pictures[i].picture_url);
         
-        var like_url = 'http://fortis4.com/ptphotos/?page_id=' + page_id + '&album_id=' + settings.album_id + '&picture_id=' + pictures[i].picture_id;
+        var pic_url = 'http://fortis4.com/ptphotos/?page_id=' + page_id + '&album_id=' + settings.album_id + '&picture_id=' + pictures[i].picture_id;
         
         FB.XFBML.parse($('#picture_preview .facebookLike').html(
-            '<fb:like layout="button_count" href="' + like_url + '"></fb:like>'
+            '<fb:like layout="button_count" href="' + pic_url + '"></fb:like>'
+        )[0]);
+        
+        FB.XFBML.parse($('#picture_preview .facebookComments').html(
+            '<div class="fb-comments" data-href="' + pic_url + '" data-width="470" data-num-posts="10"></div>'
         )[0]);
 		
         $('.img-control').unbind('click');

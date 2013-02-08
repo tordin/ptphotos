@@ -167,6 +167,8 @@ $app_data = $signed_request["app_data"];
 
             <div class="facebookLike"></div>
 
+            <div class="facebookComments"></div>
+
             <div class="img-close-preview">
                 <img src="img/close.png" />
             </div>

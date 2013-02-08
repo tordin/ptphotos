@@ -40,7 +40,7 @@ $app_data = $signed_request["app_data"];
         <script>
             var environment = {
                 facebook_id : '<?= $app_id ?>',
-                server_url  : window.location.protocol + '77.233.34.14/api', //fortis4.com/ptphotos/server',
+                server_url  : window.location.protocol + '//77.233.34.14/api', //fortis4.com/ptphotos/server',
                 namespace   : 'ptphotos'
             };
 			
@@ -77,7 +77,7 @@ $app_data = $signed_request["app_data"];
                 
                 server.getPicture(data.picture_id, function(success, response) {
                     if (success) {
-                        openPicture(response);
+                        openPicture(response, data.album_id);
                     };
                 });
             }

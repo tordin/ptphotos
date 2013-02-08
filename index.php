@@ -11,40 +11,13 @@ $signed_request = $facebook->getSignedRequest();
 
 $page_id = $signed_request["page"]["id"]; //undefined when commented/liked
 $liked_page = $signed_request["page"]["liked"];
+$app_data = $signed_request["app_data"];
 
-$shared_picture = false;
-
-if (isset($_GET['picture_id'])) {
-
-    $shared_picture = true;
-
-    $picture_id = $_GET['picture_id'];
-    $album_id = $_GET['album_id'];
-
-    //getting picture url from id
-    $response = file_get_contents('http://77.233.34.14/api/Pictures/' . $picture_id);
-    $json_response = json_decode($response);
-    $picture_url = $json_response->picture_url;
-
-    //getting page info
-    $page_info = $facebook->api($_GET['page_id']);
-    $tab_app_url = $page_info['link'] . '/app_' . $app_id;
-    $title = $page_info['name'];
-}
 ?>
 <html>
     <head>
         <title>PT Photos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <?php
-        if ($shared_picture) {
-            ?>
-            <meta property="og:title" content="<?= $title ?>" />
-            <meta property="og:image" content="<?= $picture_url ?>" />
-            <?php
-        }
-        ?>
 
         <?php
         if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
@@ -65,16 +38,6 @@ if (isset($_GET['picture_id'])) {
         <script src="script/facebook_connector.js"></script>
         <script src="script/server.js"></script>
 
-        <?php
-        if ($shared_picture) {
-            ?>
-            <script>
-                window.location.href = '<?= $tab_app_url ?>';
-            </script>
-            <?php
-        }
-        ?>
-
         <script>
             var environment = {
                 facebook_id : '449490838419909',
@@ -86,7 +49,8 @@ if (isset($_GET['picture_id'])) {
 		
             var gallery_id = 'Test',
             liked = <?= $liked_page ? 'true' : 'false' ?>,
-            page_id = '<?= $page_id ?>';
+            page_id = '<?= $page_id ?>',
+            app_data = '<?= $app_data ?>';
         </script>
 
         <script src="script/like_gate.js"></script>

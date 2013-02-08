@@ -25,20 +25,9 @@ function Album(settings) {
     function open(i) {
         current_picture = i;
 
-        $('#large_picture_src').attr('src', pictures[i].picture_url);
-        
-        var pic_url = 'http://fortis4.com/ptphotos/share.php?page_id=' + page_id + '&album_id=' + settings.album_id + '&picture_id=' + pictures[i].picture_id;
-        
-        FB.XFBML.parse($('#picture_preview .facebookLike').html(
-            '<fb:like layout="button_count" href="' + pic_url + '"></fb:like>'
-        )[0]);
-        
-        FB.XFBML.parse($('#picture_preview .facebookComments').html(
-            '<div class="fb-comments" data-href="' + pic_url + '" data-width="470" data-num-posts="10"></div>'
-        )[0]);
-		
-        $('.img-control').unbind('click');
-		
+        open(pictures[i], settings.album_id);
+
+    
         if (current_picture > 0) {
             $('.img-control.previous').toggleClass('invisible', false).click(function() {
                 navigate(-1);
@@ -46,7 +35,7 @@ function Album(settings) {
         } else {
             $('.img-control.previous').toggleClass('invisible', true);
         }
-		
+
         if (current_picture < last_loaded_picture - 1) {
             $('.img-control.next').toggleClass('invisible', false).click(function() {
                 navigate(1);
@@ -54,18 +43,6 @@ function Album(settings) {
         } else {
             $('.img-control.next').toggleClass('invisible', true);
         }
-		
-        $('#overlay').fadeIn('fast');
- 
-        FB.Canvas.getPageInfo(function(info) {
-            var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
-	                
-            $('#picture_preview').show().animate({
-                'top': scroll_top + 'px'
-            }, 300);
-        });
-	 
-        server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);
     }
 
     function renderPicture(picture, i) {
@@ -74,8 +51,8 @@ function Album(settings) {
         html.addClass('picture')
         .append(
             $('<img/>')
-            .attr('src', picture.thumb_url)
-            ).click(function() {
+                .attr('src', picture.thumb_url)
+        ).click(function() {
             open(i);
         });
 		
@@ -145,6 +122,36 @@ function Album(settings) {
     });
 	
     loadPictures();
+}
+
+function openPicture(picture, album_id) {
+    $('#large_picture_src').attr('src', picture.picture_url);
+    
+    var pic_url = 'http://fortis4.com/ptphotos/share.php?page_id=' + page_id + '&album_id=' + album_id + '&picture_id=' + picture.picture_id;
+    
+    FB.XFBML.parse($('#picture_preview .facebookLike').html(
+        '<fb:like layout="button_count" href="' + pic_url + '"></fb:like>'
+    )[0]);
+    
+    FB.XFBML.parse($('#picture_preview .facebookComments').html(
+        '<div class="fb-comments" data-href="' + pic_url + '" data-width="470" data-num-posts="10"></div>'
+    )[0]);
+    
+    $('.img-control').unbind('click');
+    
+    $('#overlay').fadeIn('fast');
+
+    FB.Canvas.getPageInfo(function(info) {
+        var scroll_top = info.scrollTop > 400 ? 420 : info.scrollTop;
+                
+        $('#picture_preview').show().animate({
+            'top': scroll_top + 'px'
+        }, 300);
+    });
+    
+    $('.img-control').toggleClass('invisible', true);
+ 
+    server.logPictureView(gallery_id, settings.album_id, pictures[i].picture_id);
 }
 
 function createDefaultAlbums() {

@@ -16,34 +16,38 @@ function renderAlbum(album) {
             .addClass('label')
 			.html(parseServerDate(album.date) + ' - ' + album.picture_count + ' photos')
 	).click(function() {
-		events.fire('tab_selected', 'album_pictures');
-		
-		$('#content_title')
-			.empty()
-			.append(
-				$('<div/>')
-		            .addClass('title')
-					.html(album.title)
-			).append(
-				$('<div/>')
-		            .addClass('label')
-					.html(parseServerDate(album.date) + ' - ' + album.picture_count + ' photos')
-			);
-
-		new Album({
-			target   : 'album_pictures',
-			album_id : album.album_id,
-			load     : function(offset, length, callback) {
-				server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
-					if (success) {
-						callback(response); //response.pictures
-					}
-				});
-			} 
-		});
+        openAlbum(album);
 	});
 	
 	return html;
+}
+
+function openAlbum(album) {
+    events.fire('tab_selected', 'album_pictures');
+    
+    $('#content_title')
+        .empty()
+        .append(
+            $('<div/>')
+                .addClass('title')
+                .html(album.title)
+        ).append(
+            $('<div/>')
+                .addClass('label')
+                .html(parseServerDate(album.date) + ' - ' + album.picture_count + ' photos')
+        );
+
+    new Album({
+        target   : 'album_pictures',
+        album_id : album.album_id,
+        load     : function(offset, length, callback) {
+            server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
+                if (success) {
+                    callback(response); //response.pictures
+                }
+            });
+        } 
+    });
 }
 
 function loadAlbums(callback) {

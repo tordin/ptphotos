@@ -40,7 +40,7 @@ $app_data = $signed_request["app_data"];
         <script>
             var environment = {
                 facebook_id : '<?= $app_id ?>',
-                server_url  : window.location.protocol + '//fortis4.com/ptphotos/server',
+                server_url  : window.location.protocol + '77.233.34.14/api', //fortis4.com/ptphotos/server',
                 namespace   : 'ptphotos'
             };
 			
@@ -65,6 +65,22 @@ $app_data = $signed_request["app_data"];
                     events.fire('tab_selected', $(event.target).closest('.selector').attr('data-tab'));
                 });
             });
+
+            function parseAppData() {
+                if (!app_data) {
+                    return;
+                }
+                
+                var data = JSON.parse(app_data);
+                
+                //album?
+                
+                server.getPicture(data.picture_id, function(success, response) {
+                    if (success) {
+                        openPicture(response);
+                    };
+                });
+            }
             
             events.bind('user_identified', function(event, user_id) {
                 FB.api('/me', function(response) {
@@ -80,6 +96,8 @@ $app_data = $signed_request["app_data"];
 					
                         loadFirstAlbums();
                         createDefaultAlbums();
+                        
+                        parseAppData();
                     }
                 });
             });

@@ -6,7 +6,6 @@ var server = new function() {
 		$.ajax({
 			url         : environment.server_url + '/page_settings.php',
 			data        : {
-				method     : 'get',
 				gallery_id : gallery_id
 			},
 			dataType    : 'jsonp',
@@ -28,9 +27,8 @@ var server = new function() {
 	
 	$o.getPicturesCount = function(gallery_id, callback) {
 		$.ajax({
-			url         : 'http://77.233.34.14/api/PictureCount',
+			url         : environment.server_url + '/PictureCount',
 			data        : {
-				method     : 'get',
 				id : gallery_id
 			},
 			dataType    : 'jsonp',
@@ -50,9 +48,8 @@ var server = new function() {
 	
 	$o.getAlbums = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : 'http://77.233.34.14/api/Albums',
+			url         : environment.server_url + '/Albums',
 			data        : {
-				method     : 'get',
 				gallery_id : gallery_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0
@@ -80,9 +77,8 @@ var server = new function() {
                 var endate = formatDate(last_month);
             
 		$.ajax({
-			url         : 'http://77.233.34.14/api/Albums',
+			url         : environment.server_url + '/Albums',
 			data        : {
-				method     : 'get',
 				gallery_id : gallery_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0,
@@ -106,9 +102,8 @@ var server = new function() {
 	
 	$o.getMostPopularPictures = function(gallery_id, offset, length, callback) {
 		$.ajax({
-			url         : 'http://77.233.34.14/api/Pictures',
+			url         : environment.server_url + '/Pictures',
 			data        : {
-				method     : 'get',
 				facebookpage_id : gallery_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0
@@ -130,9 +125,8 @@ var server = new function() {
 	
 	$o.getAlbumPictures = function(gallery_id, album_id, offset, length, callback) {
 		$.ajax({
-			url         : 'http://77.233.34.14/api/Pictures',
+			url         : environment.server_url + '/Pictures',
 			data        : {
-				method     : 'get',
 				gallery_id : gallery_id,
 				album_id   : album_id,
 				offset     : offset ? offset : 0,
@@ -153,11 +147,28 @@ var server = new function() {
 		});
 	};
 	
+	$o.getPicture = function(gallery_id, picture_id, callback) {
+		$.ajax({
+			url         : environment.server_url + '/Pictures/' + picture_id,
+			dataType    : 'jsonp',
+			contentType : 'application/json',
+			success     : function(response) {
+				if (response) { //if (response && response.success)
+					callback(true, response);
+				} else {
+					callback(false);
+				}
+			},
+			error       : function() {
+				callback(false);	
+			}			
+		});
+	};
+	
 	$o.logPictureView = function(gallery_id, album_id, picture_id) {
 		$.ajax({
 			url         : environment.server_url + '/log_picture_view.php',
 			data        : {
-				method     : 'get',
 				gallery_id : gallery_id,
 				album_id   : album_id,
 				picture_id : picture_id
@@ -171,7 +182,6 @@ var server = new function() {
 		$.ajax({
 			url         : environment.server_url + '/log_user_access.php',
 			data        : {
-				method           : 'get',
 				gallery_id       : gallery_id,
 				user_facebook_id : user_facebook_id,
 				user_name        : user_name,

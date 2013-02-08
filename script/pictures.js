@@ -22,14 +22,14 @@ function Album(settings) {
         if (current_picture + delta >= 0 && current_picture + delta < last_loaded_picture) {
             open(current_picture + delta);			
         }
-        
-        if (current_picture > pictures.length - 4) {
-            loadPictures();
-        }
     }
 	
     function open(i) {
         current_picture = i;
+        
+        if (current_picture > pictures.length - 4) {
+            loadPictures();
+        }
 
         openPicture(pictures[i], settings.album_id);
     

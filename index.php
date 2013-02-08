@@ -1,14 +1,15 @@
 <?php
 require_once('fb-sdk/facebook.php');
+$app_id = '449490838419909';
 
 $facebook = new Facebook(array(
-            'appId' => '449490838419909',
+            'appId' => $app_id,
             'secret' => '305b056f6396a5c0839281fdedd4a279'
         ));
 
 $signed_request = $facebook->getSignedRequest();
 
-$page_id = $signed_request["page"]["id"];
+$page_id = $signed_request["page"]["id"]; //undefined when commented/liked
 $liked_page = $signed_request["page"]["liked"];
 
 $shared_picture = false;
@@ -18,14 +19,17 @@ if (isset($_GET['picture_id'])) {
     $shared_picture = true;
 
     $picture_id = $_GET['picture_id'];
+    $album_id = $_GET['album_id'];
 
     //getting picture url from id
     $response = file_get_contents('http://77.233.34.14/api/Pictures/' . $picture_id);
     $json_response = json_decode($response);
     $picture_url = $json_response->picture_url;
 
-    $title = $_GET['title'];
-    $album_id = $_GET['album_id'];
+    //getting page info
+    $page_info = $facebook->api($_GET['page_id']);
+    $tab_app_url = $page_info['link'] . '/app_' . $app_id;
+    $title = $page_info['name'];
 }
 ?>
 <html>
@@ -60,6 +64,16 @@ if (isset($_GET['picture_id'])) {
         <script src="script/tools.js"></script>
         <script src="script/facebook_connector.js"></script>
         <script src="script/server.js"></script>
+
+        <?php
+        if ($shared_picture) {
+            ?>
+            <script>
+                window.location.href = '<?= $tab_app_url ?>';
+            </script>
+            <?php
+        }
+        ?>
 
         <script>
             var environment = {

@@ -178,20 +178,24 @@ $app_data = $signed_request["app_data"];
 
         </div>
 
+<<<<<<< HEAD
         <div id="picture_preview" class="rect">
+=======
+        <div id="picture_preview" class="rect text-center">
+>>>>>>> 5bc879eceda8097682613c8c149f8d23e07932f9
 
             <div class="img-close-preview">
                 <img src="img/close.png" />
             </div>
-            
+
             <div id="large_picture_controls" class="img-control-wrapper">
                 <div class="img-control previous"><img src="img/prev.png" /></div>
                 <div class="img-control next"><img src="img/next.png" /></div>
-                <div class="img-spinner" style="display: none;"><img src="img/ajax-loader.gif" /></div>
-
                 <div class="clearB"></div>
             </div>
-            
+
+            <div class="img-spinner"><img src="img/spinner.gif" /></div>
+
             <img id="large_picture_src" src="img/pixel.png" />
 
             <div class="facebookLike"></div>

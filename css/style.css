@@ -168,8 +168,15 @@ body {
     margin: 0 auto;
 }
 
+#picture_preview .img-spinner {
+    position: absolute;
+    margin: 190px 350px;
+    display: none;
+}
+
 #large_picture_src {
     width: 720px;
+    min-height: 400px;
 }
 
 .img-control-wrapper {

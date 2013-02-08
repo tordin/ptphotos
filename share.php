@@ -19,7 +19,7 @@ $picture_url = $json_response->picture_url;
 
 //getting page info
 $page_info = $facebook->api($_GET['page_id']);
-$tab_app_url = $page_info['link'] . '?v=app_' . $app_id . '&app_data={album_id:' . $album_id . ',picture_id:' . $picture_id . '}';
+$tab_app_url = $page_info['link'] . '?v=app_' . $app_id . '&app_data={"album_id":' . $album_id . ',"picture_id":' . $picture_id . '}';
 $title = $page_info['name'];
 ?>
 <meta property="og:title" content="<?= $title ?>" />

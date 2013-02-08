@@ -218,4 +218,5 @@ body {
 .initial-loader {
     display: block;
     padding: 20px;
+    margin: 0 auto;
 }

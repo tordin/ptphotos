@@ -12,7 +12,6 @@ $signed_request = $facebook->getSignedRequest();
 $page_id = $signed_request["page"]["id"]; //undefined when commented/liked
 $liked_page = $signed_request["page"]["liked"];
 $app_data = $signed_request["app_data"];
-
 ?>
 <html>
     <head>
@@ -40,7 +39,7 @@ $app_data = $signed_request["app_data"];
 
         <script>
             var environment = {
-                facebook_id : '449490838419909',
+                facebook_id : '<?= $app_id ?>',
                 server_url  : window.location.protocol + '//fortis4.com/ptphotos/server',
                 namespace   : 'ptphotos'
             };

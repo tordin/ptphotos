@@ -198,7 +198,7 @@ function openPicture(picture, album_id) {
         }, 300);
     });
  
-    server.logPictureView(gallery_id, album_id, picture.picture_id);
+    server.logPictureView(page_id, album_id, picture.picture_id);
 }
 
 function createDefaultAlbums() {
@@ -206,7 +206,7 @@ function createDefaultAlbums() {
         target   : 'latest_pictures',
         album_id : 'latest_pictures',
         load     : function(offset, length, callback) {
-            server.getLatestPictures(gallery_id, offset, length, function(success, response) {
+            server.getLatestPictures(page_id, offset, length, function(success, response) {
                 if (success) {
                     callback(response); //response.pictures
                 }
@@ -218,7 +218,7 @@ function createDefaultAlbums() {
         target   : 'most_popular',
         album_id : 'most_popular',
         load     : function(offset, length, callback) {
-            server.getMostPopularPictures(gallery_id, offset, length, function(success, response) {
+            server.getMostPopularPictures(page_id, offset, length, function(success, response) {
                 if (success) {
                     callback(response); //response.pictures
                 }

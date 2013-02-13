@@ -43,7 +43,7 @@ function openAlbum(album) {
         target   : 'album_pictures',
         album_id : album.album_id,
         load     : function(offset, length, callback) {
-            server.getAlbumPictures(gallery_id, album.album_id, offset, length, function(success, response) {
+            server.getAlbumPictures(page_id, album.album_id, offset, length, function(success, response) {
                 if (success) {
                     callback(response); //response.pictures
                 }
@@ -59,7 +59,7 @@ function loadAlbums(callback) {
     
     waiting_to_load_albums = true;
 
-	server.getAlbums(gallery_id, albums_offset, albums_per_page, function(success, response) {
+	server.getAlbums(page_id, albums_offset, albums_per_page, function(success, response) {
 		if (success) {
             if (response.length < albums_per_page) {
                 $('#albums .load_more').hide();

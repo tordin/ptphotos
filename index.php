@@ -40,14 +40,13 @@ $app_data = $signed_request["app_data"];
         <script>
             var environment = {
                 facebook_id : '<?= $app_id ?>',
-                server_url  : window.location.protocol + '//77.233.34.14/api', //fortis4.com/ptphotos/server',
+                server_url  : window.location.protocol + '//picturedata.phocabby.com/api', //fortis4.com/ptphotos/server',
                 namespace   : 'ptphotos'
             };
 			
             environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
 		
-            var gallery_id = 'Test',
-            liked = <?= $liked_page ? 'true' : 'false' ?>,
+            var liked = <?= $liked_page ? 'true' : 'false' ?>,
             page_id = '<?= $page_id ?>',
             app_data = '<?= $app_data ?>';
         </script>
@@ -77,7 +76,7 @@ $app_data = $signed_request["app_data"];
                 
                 //album?
                 
-                server.getPicture(gallery_id, data.picture_id, function(success, response) {
+                server.getPicture(page_id, data.picture_id, function(success, response) {
                     if (success) {
                         openPicture(response, data.album_id);
                     };
@@ -86,12 +85,12 @@ $app_data = $signed_request["app_data"];
             
             events.bind('user_identified', function(event, user_id) {
                 FB.api('/me', function(response) {
-                    server.logUserAccess(gallery_id, user_id, response.name, response.email);
+                    server.logUserAccess(page_id, user_id, response.name, response.email);
                 });
             });
 		
             events.bind('content_released', function(event) {
-                server.getPicturesCount(gallery_id, function(success, response) {
+                server.getPicturesCount(page_id, function(success, response) {
                     if (success) {
                         $('.selector[data-tab=albums] .count').html(response.album_count);
                         $('.selector[data-tab=latest_pictures] .count').html(response.latest_pictures_count);

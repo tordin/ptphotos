@@ -2,9 +2,9 @@ var server = new function() {
 	var $o = this;
 	
 	$o.getPageSettings = function(gallery_id, callback) {
-            /*
+            
 		$.ajax({
-			url         : environment.server_url + '/page_settings.php',
+			url         : environment.server_url + '/Page/' + gallery_id,
 			data        : {
 				gallery_id : gallery_id
 			},
@@ -21,8 +21,7 @@ var server = new function() {
 				callback(false);	
 			}			
 		});
-                */
-               callback(true, {"likers_only":true});
+                
 	};
 	
 	$o.getPicturesCount = function(gallery_id, callback) {
@@ -50,7 +49,7 @@ var server = new function() {
 		$.ajax({
 			url         : environment.server_url + '/Albums',
 			data        : {
-				gallery_id : gallery_id,
+				galleryId : gallery_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0
 			},
@@ -77,13 +76,11 @@ var server = new function() {
                 var endate = formatDate(last_month);
             
 		$.ajax({
-			url         : environment.server_url + '/Albums',
+			url         : environment.server_url + '/Pictures',
 			data        : {
-				gallery_id : gallery_id,
-				offset     : offset ? offset : 0,
+                                offset     : offset ? offset : 0,
 				length     : length ? length : 0,
-                                startdate  : startdate,
-                                endate     : endate
+				facebookpageId : gallery_id
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -104,9 +101,10 @@ var server = new function() {
 		$.ajax({
 			url         : environment.server_url + '/Pictures',
 			data        : {
-				facebookpage_id : gallery_id,
+				facebookpageId : gallery_id,
+                                length     : length ? length : 0,
 				offset     : offset ? offset : 0,
-				length     : length ? length : 0
+				mostpopular : true
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json',
@@ -128,7 +126,7 @@ var server = new function() {
 			url         : environment.server_url + '/Pictures',
 			data        : {
 				gallery_id : gallery_id,
-				album_id   : album_id,
+				albumId   : album_id,
 				offset     : offset ? offset : 0,
 				length     : length ? length : 0
 			},
@@ -167,11 +165,12 @@ var server = new function() {
 	
 	$o.logPictureView = function(gallery_id, album_id, picture_id) {
 		$.ajax({
-			url         : environment.server_url + '/log_picture_view.php',
+			url         : environment.server_url + '/Log',
 			data        : {
-				gallery_id : gallery_id,
-				album_id   : album_id,
-				picture_id : picture_id
+				FaceBookPageId : gallery_id,
+                                UserFacebookId : FB.getUserID(),
+				AlbumID   : album_id,
+				PictureId : picture_id
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json'			
@@ -180,12 +179,12 @@ var server = new function() {
 	
 	$o.logUserAccess = function(gallery_id, user_facebook_id, user_name, user_email) {
 		$.ajax({
-			url         : environment.server_url + '/log_user_access.php',
+			url         : environment.server_url + '/Log',
 			data        : {
-				gallery_id       : gallery_id,
-				user_facebook_id : user_facebook_id,
-				user_name        : user_name,
-				user_email       : user_email
+				FaceBookPageId       : gallery_id,
+				UserFacebookId : user_facebook_id,
+				UserName        : user_name,
+				Email       : user_email
 			},
 			dataType    : 'jsonp',
 			contentType : 'application/json'			

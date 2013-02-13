@@ -3,6 +3,7 @@ var waiter = new Waiter(2, function(all_done, box) {
 		var likeGate = function(active) {
 			$('#like-gate').setVisible(active);
 			$('#content').setVisible(!active);
+                        $('.header-banner').css('background-image', 'url(' + box['settings'].bannerurl + ')')
 			
 			events.fire('content_released');
 		};
@@ -10,7 +11,7 @@ var waiter = new Waiter(2, function(all_done, box) {
 		if (liked) {
 			likeGate(false);
 			
-		} else if (!box['settings'] || !box['settings'].likers_only) {
+		} else if (!box['settings'] || !box['settings'].likersOnly) {
 			likeGate(false);
 			
 		} else {
@@ -28,6 +29,6 @@ events.bind('user_identified', function(event, user_id) {
 	waiter.go('user_id', user_id);
 });
 	
-server.getPageSettings(gallery_id, function(success, settings) {
+server.getPageSettings(page_id, function(success, settings) {
 	waiter.go('settings', settings);
 });

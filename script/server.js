@@ -11,7 +11,7 @@ var server = new function() {
 			dataType    : 'jsonp',
 			contentType : 'application/json',
 			success     : function(response) {
-				if (response && response.success) {
+				if (response) { //if (response && response.success) {
 					callback(true, response);
 				} else {
 					callback(false);

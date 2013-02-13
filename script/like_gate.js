@@ -3,7 +3,6 @@ var waiter = new Waiter(2, function(all_done, box) {
 		var likeGate = function(active) {
 			$('#like-gate').setVisible(active);
 			$('#content').setVisible(!active);
-                        $('.header-banner').css('background-image', 'url(' + box['settings'].bannerurl + ')')
 			
 			events.fire('content_released');
 		};
@@ -31,4 +30,7 @@ events.bind('user_identified', function(event, user_id) {
 	
 server.getPageSettings(page_id, function(success, settings) {
 	waiter.go('settings', settings);
+        
+        $('.header-banner').css('background-image', 'url(' + settings.bannerurl + ')');
+        
 });

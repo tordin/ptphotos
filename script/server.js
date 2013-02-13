@@ -165,6 +165,7 @@ var server = new function() {
 	
 	$o.logPictureView = function(gallery_id, album_id, picture_id) {
 		$.ajax({
+                        type        : 'POST',
 			url         : environment.server_url + '/Log',
 			data        : {
 				FaceBookPageId : gallery_id,
@@ -179,6 +180,7 @@ var server = new function() {
 	
 	$o.logUserAccess = function(gallery_id, user_facebook_id, user_name, user_email) {
 		$.ajax({
+                        type        : 'POST',
 			url         : environment.server_url + '/Log',
 			data        : {
 				FaceBookPageId       : gallery_id,

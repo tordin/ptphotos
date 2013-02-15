@@ -31,7 +31,9 @@ var facebook_connector = new function() {
                                                 events.fire('content_released');
                                                 
                                                 //window.location.reload();
-					}
+					} else {
+                                            alert('please, install the app first')
+                                        }
 				},{scope: 'email'});
 			}
 	    });

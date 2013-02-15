@@ -120,6 +120,10 @@ $app_data = $signed_request["app_data"];
         <div id="overlay" class="overlay hidden"></div>
 
         <div class="wrapper">
+            
+            <div id="install-app" class="rect text-center" style="display: none;">
+                Please <a>install the app</a> to access this gallery.
+            </div>
 
             <div id="like-gate" class="rect text-center" style="display: none;">
                 <img src="img/like.png" />

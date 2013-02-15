@@ -26,8 +26,8 @@ var facebook_connector = new function() {
 						events.fire('user_identified', FB.getUserID());
                                                 
                                                 //see like gate
-                                                $('#like-gate').setVisible(liked);
-                                                $('#content').setVisible(!liked);
+                                                $('#like-gate').setVisible(!liked);
+                                                $('#content').setVisible(liked);
                                                 events.fire('content_released');
                                                 
                                                 //window.location.reload();

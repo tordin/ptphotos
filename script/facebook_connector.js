@@ -24,6 +24,12 @@ var facebook_connector = new function() {
 				FB.login(function(response) {
 					if (response.status == 'connected') {
 						events.fire('user_identified', FB.getUserID());
+                                                
+                                                //see like gate
+                                                $('#like-gate').setVisible(liked);
+                                                $('#content').setVisible(!liked);
+                                                events.fire('content_released');
+                                                
                                                 //window.location.reload();
 					}
 				},{scope: 'email'});

@@ -122,7 +122,7 @@ $app_data = $signed_request["app_data"];
         <div class="wrapper">
             
             <div id="install-app" class="rect text-center" style="display: none;">
-                Please <a>install the app</a> to access this gallery.
+                Please <a style="cursor: pointer; color: blue; text-decoration: underline;">install the app</a> to access this gallery.
             </div>
 
             <div id="like-gate" class="rect text-center" style="display: none;">
